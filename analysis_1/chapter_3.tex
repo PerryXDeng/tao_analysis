@@ -1,0 +1,313 @@
+\section{Set Theory}
+\subsection{Fundamentals}
+\begin{definition}{A1.3.1.1}
+    (Informal) We define a \emph{set} $A$ to be any unordered collection of objects, e.g., $\{3,8,5,2\}$ is a set. If $x$ is an object, we say that $x$ is \emph{an element} of $A$ or $x\in A$ if $x$ lies in the collection; otherwise we say $x\notin A$. For instance, $3\in \{1,2,3,4,5\}$ but $7\notin \{1,2,3,4,5\}$.
+\end{definition}
+\begin{axiom}{A1.3.1}
+    (Sets are objects) \emph{If $A$ is a set, then $A$ is also an object. In particular, given two sets $A$ and $B$, it is meaningful to ask whether $A$ is also an element of $B$.}
+\end{axiom}
+\begin{axiom}{A1.3.2}
+    (Equality of sets) \emph{Two sets $A$ and $B$ are equal, $A=B$, iff every element of $A$ is an element of B and vice versa. To put it another way, $A=B$ iff every element $x$ of A belongs also to $B$ and every element $y$ of $B$ belongs also to $A$.}
+\end{axiom}
+\begin{axiom}{A1.3.3}
+    (Empty set) \emph{There exists a set $\emptyset$, known as the empty set, which contains no elements, i.e., for every object $x$ we have $x\notin \emptyset$.}
+\end{axiom}
+\begin{lemma}{A1.3.1.5}
+    (Single choice) \emph{Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.}
+\end{lemma}
+
+\begin{axiom}{A1.3.4}
+    (Singleton sets and pair sets) \emph{If $a$ is an object, then there exists a set $\{a\}$ whose only element is $a$, i.e., for every object $y$, we have $y\in \{a\}$ iff $y=a$; we refer to $\{a\}$ as the singleton set whose element is $a$. Furthermore, if $a$ and $b$ are objects, then there exists a set $\{a,b\}$ whose only elements are $a$ and $b$; i.e., for every object y,we have $y\in \{a,b\}$ iff $y=a$ or $y=b$; we refer to this set as the pair set formed by $a$ and $b$.}
+\end{axiom}
+
+\begin{axiom}{A1.3.5}
+    (Pairwise union) \emph{Given any two sets $A$, $B$, there exists a set $A\cup B$, called the union of $A$ and $B$, which consists of all the elements which belong to $A$, $B$, which consists of all the elements which belong to $A$ or $B$ or both. In other words, for any object $x$,}
+    \begin{align*}
+        x\in A\cup B \iff (x\in A~or~x\in B)
+    \end{align*}
+\end{axiom}
+
+\begin{lemma}{A1.3.1.12}
+    \emph{If $a$ and $b$ are objects, then $\{a, b\} = \{a\}\cup \{b\}$. If $A, B, C$ are sets, then the union operation
+    is commutative  (i.e., $A\cup B = B\cup A$) and associative (i.e., $(A\cup B)\cup C = A\cup (B\cup C)$). Also, we have
+    $A\cup A = A\cup \emptyset = \emptyset \cup A = A$.}
+\end{lemma}
+
+\begin{definition}{A1.3.1.14}
+    (Subsets) Let $A,B$ be sets. We say that $A$ is a \emph{subset} of $B$, denoted $A\subseteq B$, iff every element of $A$ is also an element of $B$, i.e.
+    \begin{align*}
+        \text{For any object x,~}x\in A \Rightarrow x\in B.
+    \end{align*}
+
+    We say that $A$ is a \emph{proper subset} of $B$, denoted $A\subset B$, if $A\subseteq B$ and $A\neq B$.
+\end{definition}
+
+\begin{axiom}{A1.3.6}
+    (Axiom of specification) \emph{Let $A$ be a set, and for each $x\in A$, let $P(x)$ be a property pertaining to $x$ (i.e., $P(x)$ is either a true statement or a false statement). Then there exists a set, called $\{x\in A: P(x)~is~true\}$ (or simply $\{x\in A: P(x)\}$) for short, whose elements are precisely the elements $x$ in $A$ for which $P(x)$ is true. In other words, for any object $y$,}\begin{align*}
+        y\in \{x\in A: P(x)~is~true\} \iff (y\in A~and~P(y)~is~true).
+    \end{align*}
+\end{axiom}
+
+\begin{definition}{A1.3.1.22}
+    (Intersections) The \emph{intersection} \begin{align*}
+        S_1\cap S_2 := \{x\in S_1:x\in S_2\}.
+    \end{align*}
+    In other words, $S_1\cap S_2$ consists of all the elements which belong to both $S_1$ and $S_2$. Thus, for all objects $x$,\begin{align*}
+        x\in S_1\cap S_2 \iff x\in S_1~\text{and}~x\in S_2.
+    \end{align*}
+    Two sets $A,B$ are said to be \emph{disjoint} if $A\cap B=\emptyset$. Note that this is not the same concept as being \emph{distinct}, $A\neq B$. For instance, the sets $\{1,2,3\}$ and $\{2,3,4\}$ are distinct (there are elements of one set which are not elements of the other) but not disjoint (because their intersection is non-empty). Meanwhile, the sets $\emptyset$ and $\emptyset$ are disjoint but not distinct.
+\end{definition}
+
+\begin{definition}{A1.3.1.26}
+    (Difference sets) Given two sets $A$ and $B$, we define the set $A-B$ or $A\backslash B$ to be the set $A$ with any elements of $B$ removed:\begin{align*}
+        A\backslash B:=\{x\in A:x\notin B\};
+    \end{align*}
+    for instance, $\{1,2,3,4\}\backslash \{2,4,6\}=\{1,3\}$. In many cases $B$ will be a subset of $A$, but not necessarily.
+\end{definition}
+
+\begin{proposition}{A1.3.1.27}
+    (Sets form a boolean algebra) \emph{Let $A,B,C$ be sets, and let $X$ be a set containing $A,B,C$ as subsets.\begin{enumerate}
+        \item (Minimal element) We have $A\cup \emptyset = A$ and $A\cap \emptyset = \emptyset .$
+        \item (Maximal element) We have $A\cup X = X$ and $A\cap X = A.$
+        \item (Identity) We have $A\cap A = A$ and $A\cup A = A.$
+        \item (Commutativity) We have $A\cup B = B\cup A$ and $A\cap B = B\cap A$
+        \item (Associativity) We have $(A\cup B)\cup C = A\cup (B\cup C)$ and $(A\cap B)\cap C = A\cap (B\cap C)$.
+        \item (Distributivity) We have $A\cap (B\cup C) = (A\cap B)\cup (A\cap C)$ and $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$.
+        \item (Partition) We have $A\cup (X\backslash A) = X$ and $A\cap (X\backslash A) = \emptyset$.
+        \item (De Morgan's laws) We have $X\backslash (A\cup B) = (X\backslash A)\cap (X\backslash B)$ and $X\backslash (A\cap B) = (X\backslash A)\cup (X\backslash B)$.
+    \end{enumerate}}
+\end{proposition}
+
+\begin{axiom}{A1.3.7}
+    (Replacement) \emph{Let $A$ be a set. For any object $x\in A$, and any object $y$, suppose we have a statement
+    $P(x,y)$ pertaining to $x$ and $y$, such that for each $x\in A$ there is at most one $y$ for which $P(x,y)$ is true.
+    Then there exists a set $\{y:P(x,y)~is~true~for~some~x\in A\}$, such that for any object $z$,
+    \begin{align*}
+        z\in \{y:P(x,y)~is~true~for~some~x\in A\}
+        \\ \iff P(x,z)~is~true~for~some~x \in A.
+    \end{align*}}
+\end{axiom}
+
+\begin{axiom}{A1.3.8}
+    (Infinity) \emph{There exists a set $\N$ whose elements are called natural numbers, as well as an object $0$ in $\N$,
+    and an object $n++$ assigned to every natural number $n\in \N$, such that the Peano axioms 2.1-2.5 are satisfied.}
+\end{axiom}
+
+\subsection{Russell's Paradox (Optional)}
+\begin{axiom}{A1.3.9}
+    (Universal specification) \emph{(Dangerous!) Suppose for every object $x$ we have a property $P(x)$ pertaining
+    to $x$ (so that for every $x$, $P(x)$ is either a true statement or a false statement). Then there exists a set
+    $\{x:P(x)~is~true\}$, such that for any object $y$,
+    \begin{align*}
+        y\in \{x:P(x)~is~true\} \iff P(y)~is~true.
+    \end{align*}}
+\end{axiom}
+
+\begin{axiom}{A1.3.10}
+    (Regularity) \emph{If $A$ is a non-empty set, then there is at least one elemtn $x$ of $A$ which is either not a set,
+    or is disjoint from $A$.}
+\end{axiom}
+
+\subsection{Functions}
+\begin{definition}{A1.3.3.1}
+    (Functions) Let $X, Y$ be sets, and let $P(x, y)$ be a property pertaining to an object $x\in X$ and an object
+    $y\in Y$, such that for every $x\in X$ there is exactly one $y\in Y$ for which $P(x, y)$ is true.
+    Then we define the \emph{function $f: X\rightarrow Y$ defined by $P$ on the domain $X$ and range $Y$} to be the
+    object which, given any input $x\in X$, assigns an output $f(x)\in Y$, defined to be the unique object $f(x)$ for
+    which $P(x, f(x))$ is true. Thus, for any $x\in X$ and $y\in Y$,
+    \begin{align*}
+        y=f(x) \iff P(x, y)~\text{is true}.
+    \end{align*}
+    Functions are also referred to as \emph{maps} or \emph{transformations}, depending on the context. They are also
+    sometimes called \emph{morphisms}, although to be more precise, a morphism refers to a more general class of object,
+    which may or may not correspond to actual functions, depending on the context.
+\end{definition}
+
+\begin{definition}{A1.3.3.7}
+    (Equality of functions) Two functions $f: X\rightarrow Y$, $g: X\rightarrow Y$ with the same domain and range are
+    said to be \emph{equal}, $f=g$, if and only if $f(x)=g(x)$ for \emph{all} $x\in X$. If $f(x)$ and $g(x)$ agree for
+    some values of $x$, but no others, then we do not consider $f$ and $g$ to be equal. If two functions $f$, $g$ have
+    different domains, or different ranges, we also do not consider them to be equal.
+\end{definition}
+
+\begin{definition}{A1.3.3.11}
+    (Composition) Let $f: X\rightarrow Y$ and $g: Y\rightarrow Z$ be two functions, such that the range of $f$ is the
+    same as the domain of $g$. We then define the \emph{composition} $g\circ f: X\rightarrow Z$ of the two functions
+    $g$ and $f$ to be the function defined explicitly by the formula
+    \begin{align*}
+        (g\circ f)(x) = g(f(x))
+    \end{align*}
+    If the range of $f$ does not match the domain of $g$, we leave the composition $g\circ f$ undefined.
+\end{definition}
+
+\begin{definition}{A1.3.3.15}
+    (One-to-one functions) A function $f$ is \emph{one-to-one} (or \emph{injective}) if different elements map to
+    different elements:
+    \begin{align*}
+        x\neq x' \Rightarrow f(x)\neq f(x').
+    \end{align*}
+    Equivalently, a function is one-to-one if
+    \begin{align*}
+        f(x)=f(x') \Rightarrow x=x'.
+    \end{align*}
+\end{definition}
+
+\begin{definition}{A1.3.3.18}
+    (Onto functions) A function $f$ is \emph{onto} (or \emph{surjective}) if every element in $Y$ comes from applying
+    $f$ to some element in $X$:
+    \begin{align*}
+        \forall y\in Y, \exists x\in X, f(x)=y
+    \end{align*}
+\end{definition}
+
+\begin{definition}{A1.3.3.21}
+    (Bijective functions) Functions $f: X\rightarrow Y$ which are both one-to-one and onto are called \emph{bijective}
+    or \emph{invertible}.
+\end{definition}
+
+\subsection{Images and inverse images}
+\begin{definition}{A1.3.4.1}
+    (Images of sets) If $f: X\rightarrow Y$ is a function from $X to Y$, and $S$ is a set in $X$, we define $f(S)$ to be
+    the set
+    \begin{align*}
+        f(S) := \{f(x):x\in S\};
+    \end{align*}
+    this set is a subset of $Y$, and is sometimes called the \emph{image} of $S$ under the map $f$. We sometimes call
+    $f(S)$ the \emph{forward image} of $S$ to distinguish it from the concept of the \emph{inverse image} $f^{-1}(S)$
+    of $S$, which is defined below.
+
+    Note that the set $f(S)$ is well-defined thanks to the axiom of replacement (Axiom 3.7).
+\end{definition}
+
+\begin{definition}{A1.3.4.5}
+    (Inverse images) If $U$ is a subset of $Y$, we define the set $f^{-1}(U)$ to be the set
+    \begin{align*}
+        f^{-1}(U) := \{x\in X:f(x)\in U\}.
+    \end{align*}
+    In other words, $f^{-1}(U)$ consists of all the elements of $X$ which map into $U$:
+    \begin{align*}
+        f(x)\in U \iff x\in f^{-1}(U).
+    \end{align*}
+    We call $f^{-1}(U)$ the \emph{inverse image} of $U$.
+\end{definition}
+
+\begin{axiom}{A1.3.11}
+    (Power set axiom) \emph{Let $X$ and $Y$ be sets. Then there exists a set, denoted $Y^X$, which consists of all the
+    functions from $X$ to $Y$, thus
+    \begin{align*}
+        f\in Y^X \iff (f~\text{is a function with domain}~X~\text{and range}~Y).
+    \end{align*}}
+\end{axiom}
+
+\begin{lemma}{A1.3.4.10}
+    \emph{Let $X$ be a set. Then the set
+    \begin{align*}
+        \{Y:Y~\text{is a subset of}~X\}
+    \end{align*}
+    is a set.}
+\end{lemma}
+
+\begin{axiom}{A1.3.12}
+    (Union) \emph{Let $A$ be a set, all of whose elements are themselves sets. Then there exists a set $\bigcup A$ whose
+    elements are precisely those objects which are elements of the elements of $A$, thus for all objects $x$,
+    \begin{align*}
+        x\in \bigcup A \iff (x\in S~\text{for some}~S\in A).
+    \end{align*}}
+\end{axiom}
+
+\subsection{Cartesian products}
+\begin{definition}{A1.3.5.1}
+    (Ordered pair) If $x$ and $y$ are any objects (possibly equal), we define the \emph{ordered pair} $(x, y)$ to be a
+    new object, consisting of $x$ as its first component and $y$ as its second component. Two ordered pairs $(x, y)$ and
+    $(x', y')$ are considered equal if and only if both their components match, i.e.
+    \begin{align*}
+        (x, y) = (x', y') \iff x=x'~\text{and}~y=y'.
+    \end{align*}
+\end{definition}
+
+\begin{definition}{A1.3.5.4}
+    (Cartesian product) If $X$ and $Y$ are sets, then we define the \emph{Cartesian product} $X\times Y$ to be the collection
+    of ordered pairs, whose first component lies in $X$ and whose second component lies in $Y$, thus
+    \begin{align*}
+        X\times Y = \{(x, y):x\in X~\text{and}~y\in Y\}.
+    \end{align*}
+    or equivalently
+    \begin{align*}
+        a\in X\times Y \iff (a=(x, y)~\text{for some}~x\in X~\text{and}~y\in Y).
+    \end{align*}
+\end{definition}
+
+\begin{definition}{A1.3.5.7}
+    (Ordered $n$-tuple and $n$-fold Cartesian product) Let $n$ be a natural number. An \emph{ordered n-tuple}
+    $(x_i)_{1\leq i \leq n}$ (also denoted $(x_1, \dots, x_n)$) is a collection of objects $x_i$, one for every natural
+    number $i$ between $1$ and $n$; we refer to $x_i$ as the \emph{$i^{th}$ component} of the ordered $n$-tuple. Two
+    ordered $n$-tuples $(x_i)_{1\leq i \leq n}$ and $(y_i)_{1\leq i \leq n}$ are said to be equal iff $x_i = y_i$ for
+    all $1\leq i\leq n$. If $(X_i)_{1\leq i\leq n}$ is an ordered $n$-tuple of sets, we define their \emph{Cartesian
+    product} $\Pi _{1\leq i\leq n} X_i$ (also denoted $\Pi _{i=1} ^{n} X_i$ or $X_1 \times \dots \times X_n$) by
+    \begin{align*}
+        \Pi _{1\leq i\leq n} X_i := \{(x_i)_{1\leq i\leq n}:x_i\in X_i~\text{for all}~1\leq i\leq n\}.
+    \end{align*}
+\end{definition}
+
+\begin{lemma}{A1.3.5.12}
+    (Finite choice) \emph{Let $n\geq 1$ be a natural number, and for each natural number $1\leq i\leq n$, let $X_i$ be
+    a non-empty set. Then there exists an $n$-tuple $(x_i)_{1\leq i\leq n}$ such that $x_i\in X_i$ for all
+    $1\leq i\leq n$. In other words, if each $X_i$ is non-empty, then the set $\Pi _{1\leq i\leq n} X_i$ is also
+    non-empty.}
+\end{lemma}
+
+
+\subsection{Cardinality of sets}
+\begin{definition}{A1.3.6.1}
+    (Equal cardinality) We say that two sets $X$ and $Y$ have \emph{equal cardinality}, iff there exists a
+    bijection $f: X\rightarrow Y$ from $X$ to $Y$.
+\end{definition}
+
+\begin{proposition}{A1.3.6.4}
+    \emph{Let $X, Y, Z$ be sets. Then $X$ has equal cardinality with $X$. If $X$ has equal cardinality with $Y$, then $Y$
+    has equal cardinality with $X$. If $X$ has equal cardinality with $Y$ and $Y$ has equal cardinality with $Z$, then
+    $X$ has equal cardinality with $Z$.}
+\end{proposition}
+
+\begin{definition}{A1.3.6.5}
+    Let $n$ be a natural number. A set $X$ is said to have \emph{cardinality} $n$, iff it has equal cardinality with
+    $\{i\in \N : 1\leq i\leq n\}$. We also say that $X$ has \emph{$n$ elements} iff it has cardinality $n$.
+\end{definition}
+
+\begin{proposition}{A1.3.6.8}
+    (Uniqueness of cardinality) \emph{Let $X$ be a set with some cardinality $n$. Then $X$ cannot have any other
+    cardinality, i.e., $X$ cannot have cardinality $m$ for any $m\neq n$.}
+\end{proposition}
+
+\begin{lemma}{A1.3.6.9}
+    \emph{Suppose that $n\geq 1$, and $X$ has cardinality $n$. Then $X$ is non-empty, and if $x$ is any element of $X$,
+    then the set $X - \{x \}$ (i.e., $X$ with the element $x$ removed) has cardinality $n-1$.}
+\end{lemma}
+
+\begin{definition}{A1.3.6.10}
+    (Finite sets) A set is \emph{finite}, iff it has cardinality $n$ for some natural number $n$; otherwise, the set is
+    called \emph{infinite}. If $X$ is a finite set, we use $\#(X)$ to denote the cardinality of $X$.
+\end{definition}
+
+\begin{theorem}{A1.3.6.12}
+    \emph{The set of natural numbers $\N$ is infinite.}
+\end{theorem}
+
+\begin{proposition}{A1.3.6.14}
+    (Cardinal arithmetic)
+    \begin{itemize}
+        \item Let $X$ be a finite set, and let $x$ be an object which is not an element of $X$. Then $X\cup \{x\}$ is
+        finite and $\#(X\cup \{x\}) = \#(X) + 1$.
+        \item Let $X$ and $Y$ be finite sets. Then $X\cup Y$ is finite and $\#(X\cup Y) \leq \#(X) + \#(Y)$. If in
+        addition $X$ and $Y$ are disjoint, then $\#(X\cup Y) = \#(X) + \#(Y)$.
+        \item Let $X$ be a finite set, and let $Y$ be a subset of $X$. Then $Y$ is finite, and $\#(Y)\leq \#(X)$. If
+        in addition $Y\neq X$ (i.e., $Y$ is a proper subset of $X$), then $\#(Y) < \#(X)$.
+        \item If $X$ is a finite set, and $f: X\rightarrow Y$ is a function, then $f(X)$ is a finite set with
+        $\#(f(X))\leq \#(X)$. If in addition $f$ is one-to-one, then $\#(f(X)) = \#(X)$.
+        \item Let $X$ and $Y$ be finite sets. Then Cartesian product $X\times Y$ is finite, and
+        $\#(X\times Y) = \#(X)\times \#(Y)$.
+        \item Let $X$ and $Y$ be finite sets. Then the set $Y^X$ (defined in Axiom 3.11) is finite and
+        $\#(Y^X) = \#(Y)^{\#(X)}$.
+    \end{itemize}
+\end{proposition}
+

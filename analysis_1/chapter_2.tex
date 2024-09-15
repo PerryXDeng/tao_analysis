@@ -1,0 +1,167 @@
+\section{Natural Numbers}
+
+\subsection{Peano Axioms}
+\begin{axiom}{A1.2.1}
+\emph{0 is a natural number.}
+\end{axiom}
+
+\begin{axiom}{A1.2.2}
+\emph{If n is a natural number, then $n++$ is also a natural number.}
+\end{axiom}
+
+\begin{definition}{A1.2.1.3}
+We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
+\end{definition}
+
+\begin{proposition}{A1.2.1.4}
+\emph{3 is a natural number.}
+\end{proposition}
+
+\begin{axiom}{A1.2.3}
+\emph{0 is not the successor of any natural number; i.e., we have $n++ \neq 0$ for every natural number n.}
+\end{axiom}
+
+\begin{proposition}{A1.2.1.6}
+\emph{4 is not equal to 0.}
+\end{proposition}
+
+\begin{axiom}{A1.2.4}
+\emph{Different natural numbers must have different successors; i.e., if n, m are natural numbers and $n\neq m$, then $n++\neq m++$. Equivalently, if $n++ = m++$, then we must have $n=m$.}
+\end{axiom}
+
+\begin{proposition}{A1.2.1.8}
+\emph{6 is not equal to 2.}
+\end{proposition}
+
+\begin{axiom}{A1.2.5}
+    (Principle of mathematical induction) \emph{Let $P(n)$ be any property pertaining to a natural number n. Suppose that $P(0)$ is true, and suppose that whenever $P(n)$ is true, $P(n++)$ is also true. Then $P(n)$ is true for every natural number n.}
+\end{axiom}
+
+\begin{proposition}{A1.2.1.11}
+    (Example of proof by induction) \emph{A certain property $P(n)$ is true for every natural number n.}
+\end{proposition}
+
+\begin{assumption}{A1.2.6}
+    \emph{(Informal) There exists a number system $\N$ , whose elements we will call natural numbers, for which Axioms 2.1-2.5 are true.}
+\end{assumption}
+
+\begin{proposition}{A1.2.1.16}
+    (Recursive definitions) \emph{Suppose for each natural number n, we have some functions $f_{n}: \N \rightarrow \N$ from the natural numbers to the natural numbers. Let c be a natural number. Then we can assign a unique natural number $a_{n}$ to each natural number n, such that $a_{0} = c$ and $a_{n++} = f_{n}(a_{n})$ for each natural number n.}
+\end{proposition}
+
+\subsection{Addition}
+\begin{definition}{A1.2.2.1}
+    (Addition of natural numbers) Let $m$ be a natural number. To add zero to $m$, we define $0+m:=m$. Now suppose inductively that we have defined how to add n to m. Then we can add $n++$ to m by defining $(n++)+m := (n+m)++$.
+\end{definition}
+
+\begin{lemma}{A1.2.2.2}
+    \emph{For any natural number n, $n+0=n$.}
+\end{lemma}
+
+\begin{lemma}{A1.2.2.3}
+    \emph{For any natural numbers n and m, $n+(m++)=(n+m)++$.}
+\end{lemma}
+
+\begin{proposition}{A1.2.2.4}
+    (Addition is commutative) \emph{For any natural numbers n and m, $n+m=m+n$.}
+\end{proposition}
+
+\begin{proposition}{A1.2.2.5}
+    (Addition is associative) \emph{For any natural numbers $a, b, c$, we have $(a+b)+c=a+(b+c)$.}
+\end{proposition}
+
+\begin{proposition}{A1.2.2.6}
+    (Cancellation law) \emph{Let $a, b, c$ be natural numbers such that $a+b=a+c$. Then we have $b=c$.}
+\end{proposition}
+
+\begin{definition}{A1.2.2.7}
+    (Positive natural numbers) A natural number $n$ is said to be \emph{positive} iff it is not equal to 0.
+\end{definition}
+
+\begin{proposition}{A1.2.2.8}
+    \emph{If $a$ is positive and $b$ is a natural number, then $a+b$ is positive (and hence $b+a$ is also, by Proposition 2.2.4).}
+\end{proposition}
+
+\begin{corollary}{A1.2.2.9}
+    If $a$ and $b$ are natural numbers such that $a+b=0$, then $a=0$ and $b=0$.
+\end{corollary}
+
+\begin{lemma}{A1.2.2.10}
+    \emph{Let $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b++ = a$.}
+\end{lemma}
+
+\begin{definition}{A1.2.2.11}
+    (Ordering of the natural numbers) Let $n$ and $m$ be natural numbers. we say that $n$ is \emph{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \emph{strictly greater than $m$} and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
+\end{definition}
+
+\begin{proposition}{A1.2.2.12}
+    (Basic properties of order for natural numbers) \emph{Let $a,b,c$ be natural numbers. Then
+    \begin{itemize}
+        \item (Order is reflexive) $a \geq a$.
+        \item (Order is transitive) If $a \geq b$ and $b \geq c$, then $a \geq c$.
+        \item (Order is anti-symmetric) If $a \geq b$ and $b \geq a$, then $a = b$.
+        \item (Addition preserves order) $a \geq b$ iff $a+c \geq b+c$
+        \item $a < b$ iff $a++ \leq b$
+        \item $a < b$ iff $b = a + d$ for some positive number $d$.
+    \end{itemize}
+    }
+\end{proposition}
+
+\begin{proposition}{A1.2.2.13}
+    (Trichotomy of order for natural numbers). \emph{Let a and b be natural numbers. Then exactly one of the following statements is true: $a<b$, $a=b$, or $a>b$.}
+\end{proposition}
+
+\begin{proposition}{A1.2.2.14}
+    (Strong principle of induction) \emph{Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m\geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous.) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.}
+\end{proposition}
+
+\subsection{Multiplication}
+\begin{definition}{A1.2.3.1}
+    (Multiplication of natural numbers) Let $m$ be a natural number. To multiply zero to $m$, we define $0\times x ;= 0$. Now suppose inductively that we have defined how to multiply $n$ to $m$. Then we can multiply $n++$ to $m$ by defining $(n++)\times m := (n\times m) + m$.
+
+    Thus for instance $0 \times m=0$, $1\times m = 0+m$, $2\times m = 0 +  m + m$, etc.. By induction one can easily verify that the product of two natural numbers is a natural number.
+\end{definition}
+
+\begin{lemma}{A1.2.3.2}
+    (Multiplication is commutative) \emph{Let $n$, $m$ be natural numbers. Then $n\times m = m\times n$.}
+\end{lemma}
+
+\begin{lemma}{A1.2.3.3}
+    (Positive natural numbers have no zero divisors) \emph{Let $n, m$ be natural numbers. Then $n\times m = 0$ if and only if at least one of $n, m$ is equal to zero. In particular, if $n$ and $m$ are both positive, then $nm$ is also positive.}
+\end{lemma}
+
+\begin{lemma}{A1.2.3.4}
+    (Distributive law) \emph{For any natural numbers $a,b,c$, we have $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.}
+\end{lemma}
+
+\begin{lemma}{A1.2.3.5}
+    (Multiplication is associative) \emph{For any natural numbers $a,b,c$, we have $(a\times b)\times c = a\times (b\times c)$.}
+\end{lemma}
+
+\begin{proposition}{A1.2.3.6}
+    (Multiplication preserves order) \emph{If $a, b$ are natural numbers such that $a < b$, and $c$ is positive, then $ac < bc$.}
+\end{proposition}
+
+\begin{corollary}{A1.2.3.7}
+    (Cancellation law) \emph{Let $a,b,c$ be natural numbers such that $ac=bc$ and $c$ is non-zero. Then $a=b$.}
+\end{corollary}
+
+% \begin{remark}{A1.2.3.8}
+%     Just as Proposition 2.2.6 will allow for a "virtual subtraction" which will eventually let us define genuine subtraction, this corollary provides a "virtual division" which will be needed to define genuine division later on.
+% \end{remark}
+
+\begin{proposition}{A1.2.3.9}
+    (Euclidean algorithm) \emph{Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m, r,$ such that $0\leq r < q$ and $n = mq+r$.}
+\end{proposition}
+
+% \begin{remark}{A1.2.3.10}
+%     In other words, we can divide a natural number $n$ by a positive number $q$ to obtain a quotient $m$ (which is another natural number) and a remainder $r$ (which is less than $q$). This algorithm marks the beginning of \emph{number theory}, which is a beautiful and important subject but one which is beyond the scope of this text.
+% \end{remark}
+
+\begin{definition}{A1.2.3.11}
+    (Exponentiation for natural numbers) Let $m$ be a natural number. TO raise $m$ to the power 0, we define $m^0 := 1$; in particular, we define $0^0 := 1$. Now suppose recursively that $m^n$ has been defined for some natural number $n$, then we define $m^{n++} := m^n \times m$.
+\end{definition}
+
+% \begin{examples}{A1.2.3.12}
+%     Thus for instance $x^1 = x^0 \times x = 1 \times x = x$; $x^2 = x^1 \times x = x \times x$; $x^3 = x^2 \times x = x\times x\times x$; and so forth. By induction we see that this recursive definition defines $x^n$ for all natural numbers $n$.
+% \end{examples}
