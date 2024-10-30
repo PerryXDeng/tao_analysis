@@ -2,7 +2,7 @@
 \subsection{The integers}
 \begin{definition}{A1.4.1.1}
     (Integers) An \emph{integer} is an expression of the form $a\longdash b$, where $a$ and $b$ are natural numbers.
-    Two integers are considered to be equal, $a\longdash b=c\longdash d$, if and only if $a+d=c+b$. We let $\Z$ denote
+    Two integers are considered to be equal, $a\longdash b=c\longdash d$, if and only if $a+d=c+b$. We let $\integers$ denote
     the set of all integers.
 \end{definition}
 
@@ -72,14 +72,14 @@
 
 \begin{lemma}{A1.4.1.11}
     (Properties of order) \emph{Let $a, b, c$ be integers.
-    \begin{itemize}
+    \begin{enumerate}
         \item $a > b$ if and only if $a - b$ is a positive natural number.
         \item (Addition preserves order) If $a > b$, then $a + c > b + c$.
         \item (Positive multiplication preserves order) If $a > b$ and $c > 0$, then $ac > bc$.
         \item (Negation reverses order) If $a > b$, then $-a < -b$.
         \item (Order is transitive) If $a > b$ and $b > c$, then $a > c$.
         \item (Order trichotomy) Exactly one of the statements $a > b$, $a = b$, or $a < b$ is true.
-    \end{itemize}
+    \end{enumerate}
     }
 \end{lemma}
 
@@ -88,7 +88,7 @@
     (Rationals) A \emph{rational number} is an expression of the form $a // b$, where $a$ and $b$ are integers
     and $b$ is non-zero; $a // 0$ is not considered to be a rational number.
     Two rational numbers are considered to be equal, $a // b=c // d$, if and only if
-    $ad=bc$. The set of all rational numbers is denoted $\Q$.
+    $ad=bc$. The set of all rational numbers is denoted $\mathbb{Q}$.
 \end{definition}
 
 \begin{definition}{A1.4.2.2}
@@ -147,13 +147,13 @@
 \begin{proposition}{A1.4.2.9}
     (Basic properties of order on the rationals) \emph{Let $x, y, z$ be rational numbers. Then the following properties
     hold:
-    \begin{itemize}
+    \begin{enumerate}
         \item (Order trichotomy) Exactly one of the statements $x = y$, $x < y$, or $x > y$ is true.
         \item (Order is anti-symmetric) One has $x < y$ if and only if $y > x$.
         \item (Order is transitive) If $x < y$ and $y < z$, then $x < z$.
         \item (Addition preserves order) If $x < y$, then $x + z < y + z$.
         \item (Positive multiplication preserves order) If $x < y$ and $z$ is positive, then $xz < yz$.
-    \end{itemize}
+    \end{enumerate}
 }
 \end{proposition}
 
@@ -168,9 +168,9 @@
     $y$} and is sometimes denoted $d(x, y)$, thus $d(x, y) = |x - y|$. For instance, $d(3, 5) = 2$.
 \end{definition}
 
-\begin(proposition){A1.4.3.3}
+\begin{proposition}{A1.4.3.3}
     (Basic properties of absolute value and distance) \emph{Let $x, y, z$ be rational numbers.
-    \begin{itemize}
+    \begin{enumerate}
         \item (Non-degeneracy of absolute value) We have $|x| \geq 0$. Also, $|x| = 0$ if and only if $x = 0$.
         \item (Triangle inequality for absolute value) We have $|x + y| \leq |x| + |y|$.
         \item We have inequalities $-y \leq x \leq y$ if and only if $y \geq |x|$. In particular, we have
@@ -179,18 +179,18 @@
         \item (Non-degeneracy of distance) We have $d(x, y) \geq 0$. Also, $d(x, y) = 0$ if and only if $x = y$.
         \item (Symmetry of distance) We have $d(x, y) = d(y, x)$.
         \item (Triangle inequality for distance) We have $d(x, z) \leq d(x, y) + d(y, z)$.
-    \end{itemize}
+    \end{enumerate}
     }
 \end{proposition}
 
 \begin{definition}{A1.4.3.4}
-    (\epsilon -closeness). Let $\epsilon > 0$ be a rational number, and let $x, y$ be rational numbers. We say that $y$
+    ($\epsilon$ -closeness). Let $\epsilon > 0$ be a rational number, and let $x, y$ be rational numbers. We say that $y$
     is \emph{$\epsilon$ -close} to $x$ iff we have $d(x, y) < \epsilon$.
 \end{definition}
 
 \begin{proposition}{A1.4.3.7}
     \emph{Let $x, y, z$ be rational numbers.
-    \begin{itemize}
+    \begin{enumerate}
         \item If $x = y$, then $x$ is $\epsilon$-close to $y$ for every $\epsilon > 0$. Conversely, if $x$ is $\epsilon$-close
         to $y$ for every $\epsilon > 0$, then $x = y$.
         \item Let $epsilon > 0$. If $x$ is $\epsilon$-close to $y$, then $y$ is $\epsilon$-close to $x$.
@@ -206,7 +206,7 @@
         $\epsilon z$-close.
         \item Let $\epsilon , \delta > 0$. If $x$ and $y$ are $\epsilon$-close, and $z$ and $w$ are $\delta$-close,
         then $xz$ and $yw$ are $(\epsilon |z| + \delta |w| + \epsilon \delta)$-close.
-    \end{itemize}
+    \end{enumerate}
     }
 \end{proposition}
 
@@ -218,12 +218,12 @@
 
 \begin{proposition}{A1.4.3.10}
     (Properties of exponentiation, I). Let $x, y$ be rational numbers, and let $n, m$ be natural numbers.
-    \begin{itemize}
+    \begin{enumerate}
         \item We have $x^n x^m = x^{n + m}, (x^n)^m = x^{nm}, $ and $(xy)^n = x^n y^n$.
         \item Suppose $n > 0$. Then we have $x^n = 0$ if and only if $x = 0$.
         \item If $x \geq y \geq 0$, then $x^n \geq y^n \geq 0$. If $x > y \geq 0$ and $n > 0$, then $x^n > y^n \geq 0$.
         \item We have $|x^n| = |x|^n$.
-    \end{itemize}
+    \end{enumerate}
 \end{proposition}
 
 \begin{definition}{A1.4.3.11}
@@ -233,12 +233,12 @@
 
 \begin{proposition}{A1.4.3.12}
     (Properties of exponentiation, II) \emph{Let $x, y$ be rational numbers, and let $n, m$ be integers.
-    \begin{itemize}
+    \begin{enumerate}
         \item We have $x^n x^m = x^{n+m}, (x^n)^m = x^{nm},$ and $(xy)^n = x^n y^n$.
         \item If $x \geq y > 0$, then $x^n \geq y^n > 0$ if $n$ is positive, and $0 < x^n \leq y^n$ if $n$ is negative.
         \item If $x, y > 0, n \neq 0$, and $x^n = y^n$, then $x = y$.
         \item We have $|x^n| = |x|^n$
-    \end{itemize}
+    \end{enumerate}
     }
 \end{proposition}
 
@@ -248,5 +248,19 @@
     that $n \leq x < n + 1$. In fact, this integer is unique (i.e., for each $x$ there is only one $n$ for which
     $n \leq x < n + 1$). In particular, there exists a natural number $N$ such that $N > x$ (i.e., there is no such
     thing as a rational number which is larger than all the natural numbers).}
+\end{proposition}
+
+\begin{proposition}{A1.4.4.3}
+    (Interspersing of rationals by rations) \emph{If $x$ and $y$ are two rationals
+    such that $x < y$, then there exists a third rational number $z$ such that $x < z < y$.}
+\end{proposition}
+
+\begin{proposition}{A1.4.4.4}
+    \emph{There does not exist a rational number $x$ such that $x^2 = 2$.}
+\end{proposition}
+
+\begin{proposition}{A1.4.4.5}
+    \emph{For every rational number $\epsilon > 0$, there exists a non-negative
+    rational number $x$ such that $x^2 < 2 < (x + \epsilon)^2$.}
 \end{proposition}
 

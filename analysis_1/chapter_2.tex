@@ -42,11 +42,11 @@ We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
 \end{proposition}
 
 \begin{assumption}{A1.2.6}
-    \emph{(Informal) There exists a number system $\N$ , whose elements we will call natural numbers, for which Axioms 2.1-2.5 are true.}
+    \emph{(Informal) There exists a number system $\naturals$ , whose elements we will call natural numbers, for which Axioms 2.1-2.5 are true.}
 \end{assumption}
 
 \begin{proposition}{A1.2.1.16}
-    (Recursive definitions) \emph{Suppose for each natural number n, we have some functions $f_{n}: \N \rightarrow \N$ from the natural numbers to the natural numbers. Let c be a natural number. Then we can assign a unique natural number $a_{n}$ to each natural number n, such that $a_{0} = c$ and $a_{n++} = f_{n}(a_{n})$ for each natural number n.}
+    (Recursive definitions) \emph{Suppose for each natural number n, we have some functions $f_{n}: \naturals \rightarrow \naturals$ from the natural numbers to the natural numbers. Let c be a natural number. Then we can assign a unique natural number $a_{n}$ to each natural number n, such that $a_{0} = c$ and $a_{n++} = f_{n}(a_{n})$ for each natural number n.}
 \end{proposition}
 
 \subsection{Addition}
@@ -96,14 +96,14 @@ We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
 
 \begin{proposition}{A1.2.2.12}
     (Basic properties of order for natural numbers) \emph{Let $a,b,c$ be natural numbers. Then
-    \begin{itemize}
+    \begin{enumerate}
         \item (Order is reflexive) $a \geq a$.
         \item (Order is transitive) If $a \geq b$ and $b \geq c$, then $a \geq c$.
         \item (Order is anti-symmetric) If $a \geq b$ and $b \geq a$, then $a = b$.
         \item (Addition preserves order) $a \geq b$ iff $a+c \geq b+c$
         \item $a < b$ iff $a++ \leq b$
         \item $a < b$ iff $b = a + d$ for some positive number $d$.
-    \end{itemize}
+    \end{enumerate}
     }
 \end{proposition}
 

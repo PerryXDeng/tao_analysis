@@ -1,0 +1,185 @@
+\section{Series}
+\subsection{Finite series}
+\begin{definition}{A1.7.1.1}
+    (Finite series) Let $m, n$ be integers, and let $(a_i)_{i=m}^{\infty}$ be a
+    finite sequence of real numbers, assigning a real number $a_i$ to each
+    integer $i$ between $m$ and $n$ inclusive (i.e. $m \leq i \leq n$). Then
+    we define the finite sum (or finite series) $\sum_{i=m}^{n} a_i$ by the
+    recursive formula
+    \begin{align*}
+        \sum_{i=m}^{m} a_i &:= 0 \text{whenever $n < m$;} \\
+        \sum_{i=m}^{n+1} a_i &:= \sum_{i=m}^{n} a_i + a_{n+1} \text{whenever $n > m - 1$.}
+    \end{align*}
+\end{definition}
+
+\begin{lemma}{A1.7.1.4}
+    \emph{
+    \begin{enumerate}
+        \item Let $m \leq n < p$ be integers, and let $a_i$ be a real number
+        assigned to each integer $m \leq i \leq p$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i + \sum_{i=n+1}^{p} a_i = \sum_{i=m}^{p} a_i.
+        \end{equation*}
+        \item Let $m \leq n$ be integers, $k$ be another integer, and let $a_i$
+        be a real number assigned to each integer $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i = \sum_{j=m+k}^{n+k} a_{j-k}.
+        \end{equation*}
+        \item Let $m \leq n$ be integers, and let $a_i, b_i$ be real numbers assigned
+        to each integer $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} (a_i + b_i) = (\sum_{i=m}^{n} a_i) + (\sum_{i=m}^{n} b_i).
+        \end{equation*}
+        \item Let $m \leq n$ be integers, and let $a_i$ be a real number assigned
+        to each integer $m \leq i \leq n$, and let $c$ be another real number. Then
+        have
+        \begin{equation*}
+            \sum_{i=m}^{n} (ca_i) = c(\sum_{i=m}^{n} a_i).
+        \end{equation*}
+        \item (Triangle inequality for finite series) Let $m \leq n$ be integers, and
+        let $a_i$ be a real number assigned to each integer $m \leq i \leq n$. Then
+        we have
+        \begin{equation*}
+            |\sum_{i=m}^{n} a_i| \leq \sum_{i=m}^{n} |a_i|.
+        \end{equation*}
+        \item (Comparison test for finite series) Let $m \leq n$ be integers, and
+        let $a_i, b_i$ be real numbers assigned to each integer $m \leq i \leq n$.
+        Suppose that $a_i \leq b_i$ for all $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i \leq \sum_{i=m}^{n} b_i.
+        \end{equation*}
+    \end{enumerate}
+    }
+\end{lemma}
+
+\begin{definition}{A1.7.1.6}
+    (Summation over finite sets) Let $X$ be a finite set with $n$ elements (where
+    $n \in \naturals$), and let $f: X \rightarrow \reals$ be a function from $X$
+    to the real numbers (i.e., $f$ assigns a real number $f(x)$ to each element
+    $x$ of $X$). Then we can define the finite sum $\sum_{x \in X} f(x)$ as follows.
+    We first select any bijection $g$ from $\{i \in \naturals : 1 \leq i \leq n\}$
+    to $X$; such a bijection exists since $X$ is assumed to have n elements. We
+    then define
+    \begin{equation*}
+        \sum_{x \in X} f(x) := \sum_{i=1}^{n} f(g(i)).
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}{A1.7.1.7}
+    (Summation over finite sets is well-defined) \emph{Let $X$ be a finite set
+    with $n$ elements, let $f: X \rightarrow \reals$ be a function, and let $g: \{i \in \naturals : 1 \leq i \leq n\} \rightarrow X$
+    and $h: \{i \in \naturals : 1 \leq i \leq n\} \rightarrow X$ be bijections.
+    Then we have
+    \begin{equation*}
+        \sum_{x \in X} f(x) = \sum_{i=1}^{n} f(g(i)) = \sum_{i=1}^{n} f(h(i)).
+    \end{equation*}}
+\end{proposition}
+
+\begin{proposition}{A1.7.1.11}
+    (Basic properties of summation over finite sets) \emph{
+    \begin{enumerate}
+        \item If $X$ is empty, and $f: X \rightarrow \reals$ is a function (i.e.,
+        $f$ is the empty function), we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) = 0.
+        \end{equation*}
+        \item If $X$ consists of a single element, $X = \{x_0\}$, and $f: X \rightarrow \reals$
+        is a function, we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) = f(x_0).
+        \end{equation*}
+        \item (Substitution, part I) If $X$ is a finite set, $f: X \rightarrow \reals$
+        is a function, and $g: Y \rightarrow X$ is a bijection, then
+        \begin{equation*}
+            \sum_{x \in X} f(x) = \sum_{y \in Y} f(g(y)).
+        \end{equation*}
+        \item (Substitution, part II) Let $n \leq m$ be integers, and let $X$ be
+        the set $X := {i \in \naturals : n \leq i \leq m}$. If $a_i$ is a real number
+        assigned to each integer $i \in X$, then we have
+        \begin{equation*}
+            \sum_{i=n}^{m} a_i = \sum_{i=1}^{m-n+1} a_{n+i-1}.
+        \end{equation*}
+        \item Let $X, Y$ be disjoint finite sets (so $X \cap Y = \emptyset$), and
+        $f: X \cup Y \rightarrow \reals$ is a function. Then we have
+        \begin{equation*}
+            \sum_{z \in X \cup Y} f(z) = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y).
+        \end{equation*}
+        \item (Linearity, part I) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        and $g: X \rightarrow \reals$ be functions. Then
+        \begin{equation*}
+            \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
+        \end{equation*}
+        \item (Linearity, part II) Let $X$ be a finite set, let $f: X \rightarrow \reals$
+        be a function, and let $c$ be a real number. Then
+        \begin{equation*}
+            \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
+        \end{equation*}
+        \item (Monothonicity) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        and $g: X \rightarrow \reals$ be functions such that $f(x) \leq g(x)$ for all
+        $x \in X$. Then we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) \leq \sum_{x \in X} g(x).
+        \end{equation*}
+        \item (Triangle inequality) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        be a function, then
+        \begin{equation*}
+            |\sum_{x \in X} f(x)| \leq \sum_{x \in X} |f(x)|.
+        \end{equation*}
+    \end{enumerate}}
+\end{proposition}
+
+\begin{lemma}{A1.7.1.13}
+    \emph{Let $X, Y$ be finite sets, and let $f: X \times Y \rightarrow \reals$
+    be a function. Then
+    \begin{equation*}
+        \sum_{x \in X} \sum_{y \in Y} f(x, y) = \sum_{y \in Y} \sum_{x \in X} f(x, y).
+    \end{equation*}}
+\end{lemma}
+
+\begin{corollary}{A1.7.1.14}
+    (Fubini's theorem for finite series) \emph{Let $X, Y$ be finite sets, and let
+    $f: X \times Y \rightarrow \reals$ be a function. Then
+    \begin{align*}
+        \sum_{x \in X} (\sum_{y \in Y} f(x, y)) &= \sum_{(x, y) \in X \times Y} f(x, y) \\
+        &= \sum_{(y, x) \in Y \times X} f(x, y) \\
+        &= \sum_{y \in Y} (\sum_{x \in X} f(x, y)).
+    \end{align*}}
+\end{corollary}
+
+\subsection{Infinite series}
+\begin{definition}{A1.7.2.1}
+    (Formal infinite series) A (formal) infinite series is any expression of the
+    form
+    \begin{equation*}
+        \sum_{n=m}^{\infty} a_n
+    \end{equation*}
+    where $m$ is an integer, and $a_n$ is a real number for any integer $n \geq m$.
+
+    We sometimes write this series as
+    \begin{equation*}
+        a_m + a_{m+1} + a_{m+2} + \ldots
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{A1.7.2.2}
+    (Convergence of series) Let $\sum_{n=m}^{\infty} a_n$ be a formal infinite series.
+    For any integer $N \geq m$, we define the \emph{$N^{th}$ partial sum} $S_N$ of
+    this series to be $S_N := \sum_{n=m}^{N} a_n$.; of course, $S_N$ is a real number.
+    If the sequence $(S_N)_{N=m}^{\infty}$ converges to some limit $L$ as $N \rightarrow \infty$,
+    then we say that the infinite series $\sum_{n=m}^{\infty} a_n$ is \emph{convergent},
+    and \emph{converges to $L$}; we also write $L = \sum_{n=m}^{\infty} a_n$, and
+    say that $L$ is the \emph{sum} of  the infinite series $\sum_{n=m}^{\infty} a_n$.
+    If the partial sums $(S_N)_{N=m}^{\infty}$ diverge, then we say that the infinite
+    series $\sum_{n=m}^{\infty} a_n$ is \emph{divergent}, and we do not assign any
+    real number value to that series.
+\end{definition}
+
+\begin{proposition}{A1.7.2.5}
+    \emph{Let $\sum_{n=m}^{\infty} a_n$ be a formal series of real numbers. Then
+    $\sum_{n=m}^{\infty} a_n$ converges if and only if, for every real number
+    $\epsilon > 0$, there exists an integer $N \geq m$ such that
+    \begin{equation*}
+        |\sum_{n=p}^{q} a_n| < \epsilon
+    \end{equation*}
+    }
+\end{proposition}

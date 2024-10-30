@@ -1,0 +1,160 @@
+\section{Metric spaces}
+\subsection{Definitions and examples}
+\begin{lemma}{A2.1.1.1}
+    \emph{Let $(x_n)_{n=m}^{\infty}$ be a sequence of real numbers, anmd let $x$
+    be another real number. Then $(x_n)_{n=m}^{\infty}$ converges to $x$ if and
+    only if $\limit{d(x_n, x)} = 0$.}
+\end{lemma}
+
+\begin{definition}{A2.1.1.2}
+    (Metric spaces) A \emph{metric space} $(X, d)$ is a space $X$ of objects
+    (called \emph{points}), together with a \emph{distance function} or \emph{metric}
+    $d: X \times X \rightarrow [0, \infty)$, which associates to each pair $x, y$
+    of points in $X$ a non-negative real number $d(x, y) \geq 0$. Furthermore, the
+    metric must satisfy the following four axioms:
+    \begin{enumerate}
+        \item For any $x \in X$, we have $d(x, x) = 0$.
+        \item (Positivity) For any \emph{distinct} $x, y \in X$, we have $d(x, y) > 0$.
+        \item (Symmetry) For any $x, y \in X$, we have $d(x, y) = d(y, x)$.
+        \item (Triangle inequality) For any $x, y, z \in X$, we have $d(x, z) \leq d(x, y) + d(y, z)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}{A2.1.1.14}
+    (Convergence of sequences in metric spaces) Let $m$ be an integer, $(X, d)$
+    be a metric space and let $(x_n)_{n=m}^{\infty}$ be a sequence of points in $X$
+    (i.e. for every natural number $n \geq m$, we assume that $x_n$ is an element
+    of $X$). Let $x$ be a point in $X$. We say that $(x_n)_{n=m}^{\infty}$ \emph{converges
+    to $x$ with respect to the metric $d$}, if and only if the limit $\limit{d(x_n, x)}$
+    exists and is equal to 0. In other words, $(x_n)_{n=m}^{\infty}$ converges to $x$
+    with respect to $d$ if and only if for every $\epsilon > 0$, there exists an
+    $N > m$ such that $d(x_n, x) < \epsilon$ for all $n \geq N$.
+\end{definition}
+
+\begin{proposition}{A2.1.1.18}
+    (Equivalence of $l^1, l^2, l^\infty$) \emph{Let $\reals^n$ be Euclidean space,
+    and let $(x^{(k)})_{k=m}^{\infty}$ be a sequence of points in $\reals^n$. We
+    write $x^{(k)} = (x_1^{(k)}, \ldots, x_n^{(k)})$, i.e., for $j = 1, 2, \ldots, n$,
+    $x_j^{(k)} \in \reals$ is the $j$^{th} coordinate of $x^{(k)} \in \reals^n$.
+    Let $x = (x_1, \ldots, x_n)$ be a point in $\reals^n$. Then the following
+    four statements are equivalent:
+    \begin{enumerate}
+        \item $(x^{(k)})_{k=m}^{\infty}$ converges to $x$ with respect to the Euclidean metric $d_{l^2}$.
+        \item $(x^{(k)})_{k=m}^{\infty}$ converges to $x$ with respect to the taxi-cab metric $d_{l^1}$.
+        \item $(x^{(k)})_{k=m}^{\infty}$ converges to $x$ with respect to the sup norm metric $d_{l^\infty}$.
+        \item For every $j = 1, 2, \ldots, n$, the sequence $(x_j^{(k)})_{k=m}^{\infty}$
+        converges to $x_j$ in the real numbers.
+    \end{enumerate}}
+\end{proposition}
+
+\begin{proposition}{A2.1.1.19}
+    (Convergence in the discrete metric) \emph{Let $X$ be any set, and let $d_{disc}$
+    be the discrete metric on $X$. Let $(x_n)_{n=m}^{\infty}$ be a sequence of points
+    in $X$, and let $x$ be a point in $X$. Then $(x_n)_{n=m}^{\infty}$ converges to
+    $x$ with respect to the discrete metric $d_{disc}$ if and only if there exists an
+    $N \geq m$ such that $x^{n} = x$ for all $n \geq N$.}
+\end{proposition}
+
+\begin{proposition}{A2.1.1.20}
+    (Uniqueness of limits) \emph{Let $(X, d)$ be a metric space, and let $(x_n)_{n=m}^{\infty}$
+    be a sequence in $X$. Suppose that there are two points $x, x' \in X$ such that
+    $(x_n)_{n=m}^{\infty}$ converges to $x$ with respect to $d$, and $(x_n)_{n=m}^{\infty}$
+    also converges to $x'$ with respect to $d$. Then we have $x = x'$.}
+\end{proposition}
+
+\subsection{Some point-set topology of metric spaces}
+\begin{definition}{A2.1.2.1}
+    (Balls) Let $(X, d)$ be a metric space, let $x_0$ be a point in $X$, and let
+    $r > 0$. We define the \emph{ball} $B_{X, d}(x_0, r)$ in $X$, centered at $x_0$
+    , and with radius $r$, in the metric $d$, to be the set
+    \begin{equation*}
+        B_{X, d}(x_0, r) := \{x \in X: d(x, x_0) < r\}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{A2.1.2.5}
+    (Interior, exterior, boundary) Let $(X, d)$ be a metric space, let $E$ be a subset
+    of $X$, and let $x_0$ be a point in $X$. We say that $x_0$ is an \emph{interior
+    point} of $E$ if there exists a radius $r > 0$ such that $B_{X, d}(x_0, r) \subseteq E$.
+    We say that $x_0$ is an \emph{exterior point} of $E$ if there exists a radius $r > 0$
+    such that $B_{X, d}(x_0, r) \cap E = \emptyset$. We say that $x_0$ is a \emph{boundary
+    point} of $E$ if it is neither an interior point nor an exterior point of $E$.
+\end{definition}
+
+\begin{definition}{A2.1.2.9}
+    (Closure) Let $(X, d)$ be a metric space, let $E$ be a subset of $X$, and let $x_0$
+    be a point in $X$. We say that $x_0$ is an \emph{adherent point} of $E$ if for every
+    radius $r > 0$, the ball $B_{X, d}(x_0, r)$ has a non-empty intersection with $E$.
+    The set of all adherent points of $E$ is called the \emph{closure} of $E$, and is
+    denoted $\overline{E}$.
+\end{definition}
+
+\begin{propostion}{A2.1.2.10}
+    \emph{Let $(X, d)$ be a metric space, and let $E$ be a subset of $X$, and let
+    $x_0$ be a point in $X$. Then the following statements are equivalent:
+    \begin{enumerate}
+        \item $x_0$ is an adherent point of $E$.
+        \item $x_0$ is either an interior point or a boundary point of $E$.
+        \item There exists a sequence $(x_n)_{n=m}^{\infty}$ of points in $E$ which
+        converges to $x_0$ with respect to the metric $d$.
+    \end{enumerate}}
+\end{propostion}
+
+\begin{corollary}{A2.1.2.11}
+    \emph{Let $(X, d)$ be a metric space, and let $E$ be a subset of $X$. Then
+    $\overline{E} = \text{int}(E) \cup \delta E = X \setminus \text{ext}(E)$.}
+\end{corollary}
+
+\begin{definition}{A2.1.2.12}
+    (Open and closed sets) Let $(X, d)$ be a metric space, and let $E$ be a subset
+    of $X$. We say that $E$ is \emph{closed} if it contains all of its boundary
+    points, i.e., $\delta E \subseteq E$. We say that $E$ is \emph{open} if it
+    contains none of its boundary points, i.e., $\delta E \cap E = \emptyset$. If
+    $E$ contains some of its boundary points but not others, then it is neither open
+    or closed.
+\end{definition}
+
+\begin{proposition}{A2.1.2.15}
+    (Basic properties of open and closed sets) \emph{Let $(X, d)$ be a metric space.
+    \begin{enumerate}
+        \item Let $E$ be a subset of $X$. Then $E$ is open if and only if $E = \text{int}(E)$.
+        In other words, $E$ is open if and only if for every $x \in E$, there exists
+        an $r > 0$ such that $B_{X, d}(x, r) \subseteq E$.
+        \item Let $E$ be a subset of $X$. Then $E$ is closed if and only if $E$
+        contains all its adherent points. In other words, $E$ is closed if and only
+        if for every convergent sequence $(x_n)_{n=m}^{\infty}$ in $E$, the limit
+        $\limit{x_n}$ of that sequence also lies in $E$.
+        \item For any $x_0 \in X$ and any $r > 0$, the ball $B_{X, d}(x_0, r)$ is
+        an open set. The set $\{x \in X: d(x, x_0) \leq r\}$ is a closed set.
+        (This set is sometimes called the \emph{closed ball} of radius $r$ centered
+        at $x_0$.)
+        \item Any singleton set $\{x_0\}$, where $x_0 \in X$, is automatically closed.
+        \item If $E$ is a subset of $X$, then $E$ is open if and only if the complement
+        $X \setminus E := \{x \in X: x \notin E\}$ is closed.
+        \item If $E_1, \ldots, E_n$ are a finite collection of open sets in $X$,
+        then $E_1 \cap \ldots \cap E_n$ is also open. If $F_1, \ldots, F_n$ are
+        a finite collection of closed sets in $X$, then $F_1 \cup F_2 \cup \ldots \cup F_n$
+        is also closed.
+        \item If $\{E_\alpha\}_{\alpha \in I}$ is a collection of open sets in $X$
+        (where the index set $I$ could be finite, countable, or uncountable), then
+        the union $\bigcup_{\alpha \in I} E_\alpha$ is also open. If $\{F_\alpha\}_{\alpha \in I}$
+        is a collection of closed sets in $X$, then the intersection $\bigcap_{\alpha \in I} F_\alpha$
+        is also closed.
+        \item If $E$ is any subset of $X$, then $\text{int}(E)$ is the largest open
+        set which is contained in $E$; in other words, $\text{int}(E)$ is open,
+        and given any other open set $V \subseteq E$, we have $V \subseteq \text{int}(E)$.
+        Similarly, $\overline{E}$ is the smallest closed set which contains $E$;
+        in other words, $\overline{E}$ is closed, and given any other closed set
+        $K \supset E$, $K \supset \overline{E}$.
+    \end{enumerate}}
+\end{proposition}
+
+\subsection{Relative topology}
+\subsection{Cauchy sequences and complete metric spaces}
+\subsection{Compact metric spaces}
+\begin{definition}{A2.1.5.1}
+    (Compactness) A metric space $(X, d)$ is said to be \emph{compact} iff every
+    sequence in $(X, d)$ has at least one convergent subsequence. A subset $Y$ of
+    a metric space $X$ is said to be \emph{compact} if the subspace $(Y, d|_{Y \times Y})$
+    is compact.
+\end{definition}

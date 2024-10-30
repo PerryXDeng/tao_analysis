@@ -10,6 +10,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsthm,amssymb,scrextend}
 \usepackage{fancyhdr}
+\usepackage[bookmarksnumbered]{hyperref}
 \pagestyle{fancy}
 
 
@@ -19,6 +20,17 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\longdash}{\text{\textemdash}}
+\newcommand{\formallimit}[1]{\text{LIM}_{n \rightarrow \infty}{#1}}
+\newcommand{\supremum}[1]{\text{sup}{(#1)}}
+\newcommand{\infimum}[1]{\text{inf}{(#1)}}
+\newcommand{\limitsuperior}[1]{\text{lim sup}_{n \rightarrow \infty}{#1}}
+\newcommand{\limitinferior}[1]{\text{lim inf}_{n \rightarrow \infty}{#1}}
+\newcommand{\limit}[1]{\text{lim}_{n \rightarrow \infty}{#1}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\extendedreals}{\mathbb{R}^*}
+
 \renewcommand{\qed}{\hfill$\blacksquare$}
 \let\newproof\proof
 \renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
@@ -63,6 +75,10 @@
 \rhead{}
 \chead{Axioms, Definitions, Lemmas, Propositions, and Theorems in Analysis}
 
+% Add the table of contents here
+\tableofcontents
+\newpage
+
 % \maketitle
 \input{analysis_1/chapter_1.tex}
 
@@ -71,4 +87,13 @@
 \input{analysis_1/chapter_3.tex}
 
 \input{analysis_1/chapter_4.tex}
+
+\input{analysis_1/chapter_5.tex}
+
+\input{analysis_1/chapter_6.tex}
+
+\input{analysis_1/chapter_7.tex}
+
+\input{analysis_2/chapter_1.tex}
+
 \end{document}

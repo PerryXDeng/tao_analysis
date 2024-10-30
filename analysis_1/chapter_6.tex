@@ -1,0 +1,441 @@
+\section{Limits of sequences}
+\subsection{Convergence and limit laws}
+\begin{definition}{A6.1.1}
+    (Distance between two real numbers) Given two real numbers $x$ and $y$, we
+    define their distance $d(x, y)$ to be $d(x, y) := |x - y|$.
+\end{definition}
+
+\begin{definition}{A6.1.2}
+    ($\epsilon$-close real numbers) Let $\epsilon > 0$ be a real number. We say that
+    two real numbers $x, y$ are \emph{$\epsilon$-close} iff we have $d(x, y) \leq \epsilon$.
+\end{definition}
+
+\begin{definition}{A1.6.1.3}
+    (Cauchy sequences of reals) Let $\epsilon > 0$ be a real number. A sequence
+    $(a_n)_{n=N}^{\infty}$ starting at some integer $N$ is said to be \emph{$\epsilon$-steady}
+    iff $a_j$ and $a_k$ are $epsilon$-close for every $j, k \geq N$. A sequence
+    $(a_n)_{n=m}^{\infty}$ is said to be \emph{eventually $\epsilon$-steady} iff
+    there exists an $N \geq m$ such that $(a_n)_{n=N}^{\infty}$ is $\epsilon$-steady.
+    We say that $(a_n)_{n=m}^{\infty}$ is a \emph{Cauchy sequence} iff it is
+    eventually $\epsilon$-steady for every $\epsilon > 0$.
+\end{definition}
+
+\begin{proposition}{A1.6.1.4}
+    \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence of rational numbers starting
+    at some integer $m$. Then $(a_n)_{n=m}^{\infty}$ is a Cauchy sequence in the
+    sense of Definition 5.1.8 if and only if it is a Cauchy sequence in the sense
+    of Defitnition 6.1.3.}
+\end{proposition}
+
+\begin{definition}{A1.6.1.5}
+    (Convergence of sequences) Let $\epsilon > 0$ be a real number, and let $L$
+    be a real number. A sequence $(a_n)_{n=N}^{\infty}$ of real numbers is said
+    to be $\epsilon$-close to $L$ iff $a_n$ is $epsilon$-close to $L$ for every
+    $n \geq N$, i.e., we have $|a_n - L| \leq \epsilon$ for every $n \geq N$.
+    We say that a sequence $(a_n)_{n=m}^{\infty}$ is \emph{eventually $\epsilon$-close}
+    to $L$ iff there exists an $N \geq m$ such that $(a_n)_{n=N}^{\infty}$
+    is $epsilon$-close to $L$. We say that a sequence $(a_n)_{n=m}^{\infty}$
+    \emph{converges} to $L$ iff it is eventually $epsilon$-close to $L$ for every
+    $\epsilon > 0$.
+\end{definition}
+
+\begin{proposition}{A1.6.1.7}
+    (Uniqueness of limits) \emph{Let $(a_n)_{n=m}^{\infty}$ be a real sequence
+    starting at some integer index $m$, and let $L \neq L'$ be two distinct real
+    numbers. THen it is not possible for $(a_n)_{n=m}^{\infty}$ to converge to $L$
+    while also converging to $L'$.}
+\end{proposition}
+
+\begin{definition}{A1.6.1.8}
+    (Limits of sequences) If a sequence $(a_n)_{n=m}^{\infty}$ converges to some
+    real number $L$, we say that $(a_n)_{n=m}^{\infty}$ is \emph{convergent} and
+    that its \emph{limit} is $L$; we write
+    \begin{equation*}
+        L = \limit{a_n}
+    \end{equation*}
+    to denote this fact. If a sequence $(a_n)_{n=m}^{\infty}$ is not converging
+    to any real number $L$, we say that the sequence $(a_n)_{n=m}^{\infty}$ is
+    \emph{divergent} and we leave $\limit{a_n}$ undefined.
+\end{definition}
+
+\begin{proposition}{A1.6.1.10}
+    \emph{We have $\limit(1/n) = 0$}.
+\end{proposition}
+
+\begin{proposition}{A1.6.1.12}
+    (Convergent sequences are Cauchy) \emph{Suppose that $(a_n)_{n=m}^{\infty}$
+    is a convergent sequence of real numbers. Then $(a_n)_{n=m}^{\infty}$ is also
+    a Cauchy sequence.}
+\end{proposition}
+
+\begin{proposition}{A1.6.1.15}
+    (Formal limits are genuine limits) \emph{Suppose that $(a_n)_{n=1}^{\infty}$
+    is a Cauchy sequence
+    of rational numbers. Then $(a_n)_{n=1}^{\infty}$ converges
+    to $\formallimit(a_n)$, i.e.
+    \begin{equation*}
+        \formallimit{a_n} = \limit{a_n}.
+    \end{equation*}
+    }
+\end{proposition}
+
+\begin{definition}{A1.6.1.16}
+    (Bounded sequences) A sequence $(a_n)_{n=m}^{\infty}$ of real numbers is
+    \emph{bounded} by a real number $M$ iff we have $|a_n| \leq M$
+    for all $n \geq m$. We say that $(a_n)_{n=m}^{\infty}$ is \emph{bounded} iff
+    it is bounded for some real number $M > 0$.
+\end{definition}
+
+\begin{corollary}{A1.6.1.17}
+    \emph{Every convergent sequence of real numbers is bounded}.
+\end{corollary}
+
+\begin{theorem}{A1.6.1.19}
+    (Limit Laws) Let $(a_n)_{n=m}^{\infty}$ and $(b_n)_{n=m}^{\infty}$ be convergent
+    sequences of real numbers, and let $x, y$ be the real numbers $x := \limit{a_n}$
+    and $y:= \limit{b_n}$.
+    \begin{enumerate}
+        \item The sequences $(a_n + b_n)_{n=m}^{\infty}$ converges to $x + y$; in other
+        words,
+        \begin{equation*}
+            \limit{a_n + b_n} = \limit{a_n} + \limit{b_n}
+        \end{equation*}
+        \item The sequence $(a_n b_n)_{n=m}^{\infty}$ converges to $xy$; in other
+        words,
+        \begin{equation*}
+            \limit{a_n b_n} = (\limit{a_n})(\limit{b_n})
+        \end{equation*}
+        \item For any real number $c$, the sequence $(ca_n)_{n=m}^{\infty}$ converges
+        to $cx$; in other words,
+        \begin{equation*}
+            \limit{ca_n} = c\limit{a_n}
+        \end{equation*}
+        \item The sequence $(a_n - b_n)_{n=m}^{\infty}$ converges to $x - y$;
+        in other words,
+        \begin{equation*}
+            \limit{a_n - b_n} = \limit{a_n} - \limit{b_n}
+        \end{equation*}
+        \item Suppose that $y \neq 0$, and that $b_n \neq 0$ for all $n \geq m$.
+        Then the sequence $(b^{-1}_n)_{n=m}^{\infty}$ converges to $y^{-1}$; in
+        other words,
+        \begin{equation*}
+            \limit{b^{-1}_n} = (\limit{b_n})^{-1}
+        \end{equation*}
+        \item Suppose that $y \neq 0$, and that $b_n \neq 0$ for all $n \geq m$.
+        Then the sequence $(a_n / b_n)_{n=m}^{\infty}$ converges to $x/y$; in other
+        words,
+        \begin{equation*}
+            \limit{a_n / b_n} = \frac{\limit{a_n}}{\limit{b_n}}
+        \end{equation*}
+        \item The sequence $(\max(a_n, b_n))_{n=m}^{\infty}$ converges to $\max(x,y)$;
+        in other words,
+        \begin{equation*}
+            \limit{\max(a_n / b_n)} = \max(\limit{a_n}, \limit{b_n})
+        \end{equation*}
+        \item The sequence $(\min(a_n, b_n))_{n=m}^{\infty}$ converges to $\min(x,y)$;
+        in other words,
+        \begin{equation*}
+            \limit{\min(a_n / b_n)} = \min(\limit{a_n}, \limit{b_n})
+        \end{equation*}
+    \end{enumerate}
+\end{theorem}
+
+\subsection{The extended real number system}
+\begin{definition}{A1.6.2.1}
+    (Extended real number system) The \emph{extended real number system} $\extendedreals$
+    is the real line $\reals$ with two additional elements attached, called
+    $+\infty$ and $-\infty$. These elements are distinct from each other and also
+    distinct from every real number. An extended real number $x$ is called \emph{finite}
+    if it is a real number, and \emph{infinite} iff it is equal to $+\infty$ or
+    $-\infty$. (This definition is not directly related to the notion of finite
+    and infinite sets in Section 3.6, though it is of course similar in spirit.)
+\end{definition}
+
+\begin{definition}{A1.6.2.2}
+    (Negation of extended reals) The operation of negation $x \mapsto -x$ on $\reals$,
+    we now extend to $\extendedreals$ by defining $-(+\infty) := -\infty$ and
+    $-(-\infty) := +\infty$.
+
+    Thus every extended real number $x$ has a negation, and $-(-x)$ is always equal
+    to $x$.
+\end{definition}
+
+\begin{definition}{A1.6.2.3}
+    (Ordering of extended reals) Let $x$ and $y$ be extended real numbers. We say
+    that $x \leq y$, i.e., $x$ is less than or equal to $y$, iff one of the following
+    three statements is true:
+    \begin{enumerate}
+        \item $x$ and $y$ are real numbers, and $x \leq y$ as real numbers
+        \item $y = +\infty$
+        \item $x = -\infty$
+    \end{enumerate}
+    We say that $x < y$ if we have $x \leq y$ and $x \neq y$. We sometimes write
+    $x < y$ as $y > x$, and $x \leq y$ as $y \geq x$.
+\end{definition}
+
+\begin{proposition}{A1.6.2.5}
+    \emph{Let $x, y, z$ be extended real numbers. Then the following statements
+    are true:
+    \begin{enumerate}
+        \item (Reflexivity) We have $x \leq x$
+        \item (Trichotomy) Exactly one of the statements $x < y$, $x = y$, or $x > y$
+        is true
+        \item (Transitivity) If $x \leq y$ and $y \leq z$, then $x \leq z$
+        \item (Negation reverses order) If $x \leq y$, then $-y \leq -x$
+    \end{enumerate}
+    }
+\end{proposition}
+
+\begin{definition}{A1.6.2.6}
+    (Supremum of sets of extended reals) Let $E$ be a subset of $\extendedreals$.
+    Then we define the \emph{supremum} $\supremum{E}$ or \emph{least upper bound}
+    of $E$ by the following rule.
+    \begin{enumerate}
+        \item If $E$ is contained in $\reals$ (i.e., $+\infty$ and $-\infty$ are not
+        elements of $E$), then we let $\supremum{E}$ be as defined in Definition 5.5.10
+        \item If $E$ contains $+\infty$, then we set $\supremum{E} := +\infty$
+        \item If $E$ does not contain $+\infty$, but does contain $-\infty$, then we
+        set $\supremum{E} := \supremum{E \setminus \{-\infty\}}$ (which is a subset of $\reals$
+        and thus falls under case (a))
+    \end{enumerate}
+    We also define the \emph{infimum} $\infimum{E}$ of $E$ (also known as the \emph{greatest
+    lower bound} of $E$) by the formula
+    \begin{equation*}
+        \infimum{E} := -\supremum{-E}
+    \end{equation*}
+    where $-E$ is the set $\{-x: x \in E\}$.
+\end{definition}
+
+\begin{theorem}{A1.6.2.11}
+    \emph{Let $E$ be a subset of $\extendedreals$. Then the following statements
+    are true.
+    \begin{enumerate}
+        \item For every $x \in E$, we have $x \leq \supremum{E}$ and $x \geq \infimum{E}$
+        \item Suppose that $M \in \extendedreals$ is an upper bound for $E$, i.e.,
+        $x \leq M$ for all $x \in E$. Then we have $\supremum{E} \leq M$.
+        \item Suppose that $m \in \extendedreals$ is a lower bound for $E$, i.e.,
+        $x \geq m$ for all $x \in E$. Then we have $\infimum{E} \geq m$.
+    \end{enumerate}
+    }
+\end{theorem}
+        
+\subsection{Suprema and Infima of sequences}
+\begin{definition}{A1.6.3.1}
+    (Sup and inf of sequences) Let $(a_n)_{n=m}^{\infty}$ be a sequence of real
+    numbers. Then we define $\supremum{a_n}_{n=m}^{\infty}$ to be the supremum of the set
+    $\{a_n: n \geq m\}$, and $\infimum{a_n}_{n=m}^{\infty}$ to be the infimum of the same set
+    $\{a_n: n \geq m\}$.
+\end{definition}
+
+\begin{proposition}{A1.6.3.6}
+    (Least upper bound property) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence
+    of real numbers, and let $x$ be the extended real number $x := \supremum{a_n}_{n=m}^{\infty}$.
+    Then we have $a_n \leq x$ for all $n \geq m$. Also, whenever $M \in \extendedreals$
+    is an upper bound for $a_n$ (i.e., $a_n \leq M$ for all $n \geq m$), we have
+    $x \leq M$. Finally, for every extended real number $y$ for which $y < x$,
+    there exists at least one $n \geq m$ for which $y < a_n \leq x$.}
+\end{proposition}
+
+\begin{proposition}{A1.6.3.8}
+    (Monotone bounded sequences converge) \emph{Let $(a_n)_{n=m}^{\infty}$ be a
+    sequence of real numbers which has some finite upper bound $M \in \reals$,
+    and which is also increasing (i.e., $a_{n+1} \geq a_n$ for all $n \geq m$).
+    Then the sequence $(a_n)_{n=m}^{\infty}$ converges to some real number $L$.
+    Then $(a_n)_{n=m}^{\infty}$ is convergent, and in fact
+    \begin{equation*}
+        \limit{a_n} = \supremum{a_n}_{n=m}^{\infty} \leq M
+    \end{equation*}
+    }
+\end{proposition}
+
+\begin{proposition}{A1.6.3.10}
+    \emph{Let $0 < x < 1$. Then we have $\limit{x^n = 0}$.}
+\end{proposition}
+
+\subsection{Limsup, Liminf, and limit points}
+\begin{definition}{A1.6.4.1}
+    (Limit points) Let $(a_n)_{n=m}^{\infty}$ be a sequence of real numbers, let
+    $x$ be a real number, and let $\epsilon > 0$ be a real number. We say that $x$
+    is \emph{$\epsilon$-adherent} to $(a_n)_{n=m}^{\infty}$ iff there exists an
+    $n \geq m$ such that $a_n$ is $\epsilon$-close to $x$. We say that $x$ is a
+    \emph{limit point} or \emph{adherent point} of $(a_n)_{n=m}^{\infty}$ iff it
+    is continually $\epsilon$-adherent to $(a_n)_{n=m}^{\infty}$ for every $\epsilon > 0$.
+\end{definition}
+
+\begin{proposition}{A1.6.4.5}
+    (Limits are limit points) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence which
+    converges to a real number $c$. Then $c$ is a limit point of $(a_n)_{n=m}^{\infty}$,
+    and in fact, $c$ is the only limit point of $(a_n)_{n=m}^{\infty}$.}
+\end{proposition}
+
+\begin{definition}{A1.6.4.6}
+    (Limit superior and limit inferior) Suppose that $(a_n)_{n=m}^{\infty}$ is a
+    sequence. We define a new sequence $(a_N^+)_{N=m}^{\infty}$ by the formula
+    \begin{equation*}
+        a_N^+ := \supremum{a_n}_{n=N}^{\infty}
+    \end{equation*}
+    More informally, $a_N^+$ is the supremum of all the elements of the sequence
+    from $a_N$ onwards. We then define the \emph{limit superior} of the sequence
+    $(a_n)_{n=m}^{\infty}$, denoted $\limitsuperior{a_n}$, by the formula
+    \begin{equation*}
+        \limitsuperior{a_n} := \infimum{a_N^+}_{N=m}^{\infty}
+    \end{equation*}
+    Similarly, we can define
+    \begin{equation*}
+        a_N^- := \infimum{a_n}_{n=N}^{\infty}
+    \end{equation*}
+    and define the \emph{limit inferior} of the sequence $(a_n)_{n=m}^{\infty}$,
+    denoted $\limitinferior{a_n}$, by the formula
+    \begin{equation*}
+        \limitinferior{a_n} := \supremum{a_N^-}_{N=m}^{\infty}
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}{A1.6.4.12}
+    \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence of real numbers, let $L^+$ be
+    the limit superior of this sequence, and let $L^-$ be the limit inferior of
+    this sequence (thus $L^+$ and $L^-$ are extended real numbers).
+    \begin{enumerate}
+        \item For every $x > L+$, there exists an $N \geq m$ such that $a_n < x$
+        for all $n \geq N$. (In other words, for every $x > L^+$, the elements of
+        the sequence $(a_n)_{n=m}^{\infty}$ are eventually less than $x$.) Similarly,
+        for every $y < L^-$ there exists an $N \geq m$ such that $a_n > y$ for all
+        $n \geq N$.
+        \item For every $x < L^+$, and every $N \geq m$, there exists an $n \geq N$
+        such that $a_n > x$. (In other words, for every $x < L^+$, the elements of
+        the sequence $(a_n)_{n=m}^{\infty}$ exceed $x$ infinitely often.) Similarly,
+        for every $y > L^-$, and every $N \geq m$, there exists an $n \geq N$ such
+        that $a_n < y$.
+        \item We have $\infimum{a_n}_{n=m}^{\infty} \leq L^- \leq L^+ \leq \supremum{a_n}_{n=m}^{\infty}$.
+        \item If $c$ is any limit point of $(a_n)_{n=m}^{\infty}$, then we have
+        $L^- \leq c \leq L^+$.
+        \item If $L^+$ is finite, then it is a limit point of $(a_n)_{n=m}^{\infty}$.
+        Similarly, if $L^-$ is finite, then it is a limit point of $(a_n)_{n=m}^{\infty}$.
+        \item Let $c$ be a real number. If $(a_n)_{n=m}^{\infty}$ converges to $c$
+        , then we must have $L^+ = L^- = c$. Conversely, if $L^+ = L^- = c$, then
+        $(a_n)_{n=m}^{\infty}$ converges to $c$.
+    \end{enumerate}
+    }
+\end{proposition}
+
+\begin{lemma}{A1.6.4.13}
+    (Comparison principle) \emph{Suppose that $(a_n)_{n=m}^{\infty}$ and $(b_n)_{n=m}^{\infty}$
+    are two sequences of real numbers such that $a_n \leq b_n$ for all $n \geq m$.
+    Then we have the inequalities
+    \begin{align*}
+        \supremum{a_n}_{n=m}^{\infty} &\leq \supremum{b_n}_{n=m}^{\infty} \\
+        \infimum{a_n}_{n=m}^{\infty} &\leq \infimum{b_n}_{n=m}^{\infty} \\
+        \limitsuperior{a_n} &\leq \limitsuperior{b_n} \\
+        \limitinferior{a_n} &\leq \limitinferior{b_n}
+    \end{align*}
+    }
+\end{lemma}
+
+\begin{corollary}{A1.6.4.14}
+    (Squeeze test) \emph{Let $(a_n)_{n=m}^{\infty}$, $(b_n)_{n=m}^{\infty}$, and
+    $(c_n)_{n=m}^{\infty}$ be sequences of real numbers such that
+    \begin{equation*}
+        a_n \leq b_n \leq c_n
+    \end{equation*}
+    for all $n \geq m$. Suppose also that $(a_n)_{n=m}^{\infty}$ and $(c_n)_{n=m}^{\infty}$
+    both converge to the same limit $L$. Then $(b_n)_{n=m}^{\infty}$ is also convergent
+    to $L$.}
+\end{corollary}
+
+\begin{corollary}{A1.6.4.17}
+    (Zero test for sequences) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence of real
+    numbers. Then the limit $\limit{a_n}$ exists and is equal to 0 if and only if
+    the limit $\limit{|a_n|}$ exists and is equal to 0.}
+\end{corollary}
+
+\begin{theorem}{A1.6.4.18}
+    (Completeness of the reals) \emph{A sequence $(a_n)_{n=m}^{\infty}$ of real numbers
+    is a Cauchy sequence if and only if it is convergent.}
+\end{theorem}
+
+\subsection{Some standard limits}
+\begin{corollary}{A1.6.5.1}
+    \emph{We have $\limit{1/n^{1/k}} = 0$ for every integer $k \geq 1$.}
+\end{corollary}
+
+\begin{lemma}{A1.6.5.2}
+    \emph{Let $x$ be a real number. Then we have $\limit{x^n}$ exists and is equal
+    to zero when $|x| < 1$, exists and is equal to $1$ when $x = 1$, and diverges
+    when $x < -1$ or when $|x| > 1$.}
+\end{lemma}
+
+\begin{lemma}{A1.6.5.3}
+    \emph{For any $x > 0$, we have $\limit{x^{1/n}} = 1$}
+\end{lemma}
+
+\subsection{Subsequences}
+\begin{definition}{A1.6.6.1}
+    (Subsequences) Let $(a_n)_{n=m}^{\infty}$ and $(b_n)_{n=N}^{\infty}$ be sequences
+    of real numbers. We say that $(b_n)_{n=N}^{\infty}$ is a \emph{subsequence} of
+    $(a_n)_{n=m}^{\infty}$ iff there exists a function $f: \naturals \to \naturals$
+    which is strictly increasing (i.e., $f(n + 1) > f(n)$ for all $n \in \naturals$)
+    such that
+    \begin{equation*}
+        b_n = a_{f(n)} \text{for all} n \in \naturals.
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}{A1.6.6.4}
+    \emph{Let $(a_n)_{n=m}^{\infty}$, $(b_n)_{n=N}^{\infty}$, and $(c_n)_{n=P}^{\infty}$
+    be sequences of real numbers. Then $(a_n)_{n=m}^{\infty}$ is the subsequence
+    of $(a_n)_{n=m}^{\infty}$. Furthermore, if $(b_n)_{n=N}^{\infty}$ is a subsequence
+    of $(a_n)_{n=m}^{\infty}$, and $(c_n)_{n=P}^{\infty}$ is a subsequence of
+    $(b_n)_{n=N}^{\infty}$, then $(c_n)_{n=P}^{\infty}$ is a subsequence of
+    $(a_n)_{n=m}^{\infty}$.}
+\end{lemma}
+
+\begin{proposition}{A1.6.6.5}
+    (Subsequences related to limits) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence
+    of real numbers, and let $L$ be a real number. Then the following two statements
+    are logically equivalent (each one implies the other):
+    \begin{enumerate}
+        \item The sequence $(a_n)_{n=m}^{\infty}$ converges to $L$.
+        \item Every subsequence of $(a_n)_{n=m}^{\infty}$ converges to $L$.
+    \end{enumerate}
+    }
+\end{proposition}
+
+\begin{proposition}{A1.6.6.6}
+    (Subsequences related to limit points) \emph{Let $(a_n)_{n=m}^{\infty}$ be a
+    sequence of real numbers, and let $L$ be a real number. Then the following two
+    statements are logically equivalent.
+    \begin{enumerate}
+        \item $L$ is a limit point of $(a_n)_{n=m}^{\infty}$.
+        \item There exists a subsequence of $(a_n)_{n=m}^{\infty}$ which converges
+        to $L$.
+    \end{enumerate}
+    }
+\end{proposition}
+
+\begin{theorem}{A1.6.6.8}
+    (Bolzano-Weierstrass theorem) \emph{Let $(a_n)_{n=0}^{\infty}$ be a bounded
+    sequence (i.e., there exists a real number $M > 0$ such that $|a_n| \leq M$
+    for all $n \in \naturals$). Then there is at least one subsequence of
+    $(a_n)_{n=0}^{\infty}$ which converges.}
+\end{theorem}
+
+\subsection{Real exponentiation, part II}
+\begin{lemma}{A1.6.7.1}
+    (Continuity of exponentiation) \emph{Let $x > 0$, and let $\alpha$ be a real
+    number. Let $(q_n)_{n=0}^{\infty}$ be a sequence of rational numbers converging
+    to $\alpha$. Then $(x^{q_n})_{n=0}^{\infty}$ is also a convergent sequence.
+    Furthermore, if $(q'_n)_{n=0}^{\infty}$ is any other sequence of rational numbers
+    converging to $\alpha$, then $(x^{q'_n})_{n=0}^{\infty}$ has the same limit
+    as $(x^{q_n})_{n=0}^{\infty}$.}
+\end{lemma}
+
+\begin{definition}{A1.6.7.2}
+    (Exponentiation to a real exponent) Let $x > 0$ be real, and let $\alpha$ be
+    a real number. We define the quantity $x^\alpha$ by the formula $x^\alpha := \limit{x^{q_n}}$,
+    where $(q_n)_{n=0}^{\infty}$ is any sequence of rational numbers converging to $\alpha$.
+\end{definition}
+
+\begin{proposition}{A1.6.7.3}
+    \emph{All the results of Lemma 5.6.9, which held for rational numbers $q$ and
+    $r$, continue to hold for real numbers $q$ and $r$.}
+\end{proposition}
