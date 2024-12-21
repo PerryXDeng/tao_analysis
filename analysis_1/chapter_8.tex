@@ -1,0 +1,167 @@
+\section{Infinite sets}
+\subsection{Countability}
+\begin{definition}{A1.8.1.1}
+    (Countable sets) A set $X$ is said to be \emph{countably infinite} (or just $countable$)
+    iff it has equal cardinality with the natural numbers $\naturals$. A set $X$
+    is said to be \emph{at most countable} iff it is either countable or finite.
+    We say that a set is \emph{uncountable} if it is infinite but not countable.
+\end{definition}
+
+\begin{proposition}{A1.8.1.4}
+    (Well ordering principle) \emph{Let $X$ be a non-empty subset of the natural
+    numbers $\naturals$. Then there exists exactly one element $n \in X$ such that
+    $n \leq m$ for all $m \in X$. In other words, every non-empty set of natural
+    numbers has a minimum element.}
+\end{proposition}
+
+\begin{proposition}{A1.8.1.5}
+    \emph{Let $X$ be an infinite subset of the natural numbers $\naturals$. Then
+    there exists a unique a bijection $f: \naturals \to X$ which is increasing,
+    in the sense that $f(n + 1) > f(n)$ for all $n \in \naturals$. In particular,
+    $X$ has equal cardinality with $\naturals$ and is hence countable.}
+\end{proposition}
+
+\begin{corollary}{A1.8.1.6}
+    \emph{All subsets of the natural numbers are at most countable.}
+\end{corollary}
+
+\begin{corollary}{A1.8.1.7}
+    \emph{If $X$ is an at most countable set, and $Y$ is a subset of $X$, then
+    $Y$ is also at most countable.}
+\end{corollary}
+
+\begin{proposition}{A1.8.1.8}
+    \emph{Let $Y$ be a set, and let $f: \naturals \to Y$ be a function. Then
+    $f(\naturals)$ is at most countable.}
+\end{proposition}
+
+\begin{corollary}{A1.8.1.9}
+    \emph{Let $X$ be a countable set, and let $f: X \rightarrow Y$ be a function.
+    Then $f(X)$ is at most countable.}
+\end{corollary}
+
+\begin{proposition}{A1.8.1.10}
+    \emph{Let $X$ be a countable set, and let $Y$ be a countable set. Then $X \cup Y$
+    is a countable set.}
+\end{proposition}
+
+\begin{corollary}{A1.8.1.11}
+    \emph{The integers $\integers$ are countable.}
+\end{corollary}
+
+\begin{lemma}{A1.8.1.12}
+    \emph{The set
+    \begin{equation*}
+        A := \{(n, m) \in \naturals \times \naturals : 0 \leq m \leq n\}
+    \end{equation*}
+    is countable.}
+\end{lemma}
+
+\begin{corollary}{A1.8.1.13}
+    \emph{The set $\naturals \times \naturals$ is countable.}
+\end{corollary}
+
+\begin{corollary}{A1.8.1.14}
+    \emph{If $X$ and $Y$ are countable, then $X \times Y$ is countable.}
+\end{corollary}
+
+\begin{corollary}{A1.8.1.15}
+    \emph{The rationals $\rationals$ are countable.}
+\end{corollary}
+
+\subsection{Summation on infinite sets}
+\begin{definition}{A1.8.2.1}
+    (Series on countable sets) Let $X$ be a countable set, and let $f: X \to \reals$
+    be a function. We say that the series $\sum_{x \in X} f(x)$ is \emph{absolutely
+    convergent} iff for some bijection $g: \naturals \to X$, the sum $\sum_{n=0}^{\infty} f(g(n))$
+    is absolutely convergent. We then define the sum of $\sum_{x \in X} f(x)$ by
+    the formula
+    \begin{equation*}
+        \sum_{x \in X} f(x) := \sum_{n=0}^{\infty} f(g(n)).
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}{A1.8.2.2}
+    (Fubini's theorem for infinite sums) \emph{Let $f: \naturals \times \naturals \to \reals$
+    be a function such that $\sum_{(n, m) \in \naturals \times \naturals} f(n, m)$ is
+    absolutely convergent. Then we have
+    \begin{align*}
+        \sum_{n=0}^{\infty} \left( \sum_{m=0}^{\infty} f(n, m) \right)
+        &= \sum_{(n, m) \in \naturals \times \naturals} f(n, m) \\
+        &= \sum_{(m, n) \in \naturals \times \naturals} f(n, m) \\
+        &= \sum_{m=0}^{\infty} \left( \sum_{n=0}^{\infty} f(n, m) \right).
+    \end{align*}}
+\end{theorem}
+
+\begin{lemma}{A1.8.2.3}
+    \emph{Let $X$ be a countable set, and let $f: X \to \reals$ be a function.
+    Then the series $\sum_{x \in X} f(x)$ is absolutely convergent if and only if
+    \begin{equation*}
+        \sup \left\{ \sum_{x \in A} |f(x)| : A \subseteq X, A \text{ finite} \right\} < \infty.
+    \end{equation*}}
+\end{lemma}
+
+\begin{definition}{A1.8.2.4}
+    Let $X$ be a set (which could be uncountable), and let $f: X \to \reals$ be a
+    function. We say that the series $\sum_{x \in X} f(x)$ is \emph{absolutely convergent}
+    iff
+    \begin{equation*}
+        \sup \left\{ \sum_{x \in A} |f(x)| : A \subseteq X, A \text{ finite} \right\} < \infty.
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}{A1.8.2.5}
+    \emph{Let $X$ be a set (which could be uncountable), and let $f: X \to \reals$
+    be a function such that the series $\sum_{x \in X} f(x)$ is absolutely convergent.
+    Then the set $\{x \in X : f(x) \neq 0\}$ is at most countable. (This result
+    requires the axiom of choice, see Section 8.4.)}
+\end{lemma}
+
+\begin{proposition}{A1.8.2.6}
+    (Absolutely convergent series laws) \emph{Let $X$ be an arbitrary set (possibly
+    uncountable), and let $f: X \to \reals$ and $g: X \to \reals$ be functions such
+    that the series $\sum_{x \in X} f(x)$ and $\sum_{x \in X} g(x)$ are both absolutely
+    convergent.
+    \begin{enumerate}
+        \item The series $\sum_{x \in X} (f(x) + g(x))$ is absolutely convergent, and
+        \begin{equation*}
+            \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
+        \end{equation*}
+        \item If $c$ is a real number, then $\sum_{x \in X} cf(x)$ is absolutely convergent,
+        and
+        \begin{equation*}
+            \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
+        \end{equation*}
+        \item If $X = X_1 \cup X_2$ for some disjoint sets $X_1$ and $X_2$, then
+        $\sum_{x \in X_1} f(x)$ and $\sum_{x \in X_2} f(x)$ are absolutely convergent,
+        and
+        \begin{equation*}
+            \sum_{x \in X_1 \cup X_2} f(x) = \sum_{x \in X_1} f(x) + \sum_{x \in X_2} f(x).
+        \end{equation*}
+        Conversely, if $h: X \to \reals$ is such that $\sum_{x \in X_1} h(x)$ and
+        $\sum_{x \in X_2} h(x)$ are absolutely convergent, then $\sum_{x \in X_1 \cup X_2} h(x)$
+        is also absolutely convergent, and
+        \begin{equation*}
+            \sum_{x \in X_1 \cup X_2} h(x) = \sum_{x \in X_1} h(x) + \sum_{x \in X_2} h(x).
+        \end{equation*}
+        \item If $Y$ is another set, and $\phi: Y \to X$ is a bijection, then $\sum_{y \in Y} f(\phi(y))$
+        is absolutely convergent, and
+        \begin{equation*}
+            \sum_{y \in Y} f(\phi(y)) = \sum_{x \in X} f(x).
+        \end{equation*}
+    \end{enumerate}}
+\end{proposition}
+
+\begin{lemma}{A1.8.2.7}
+    \emph{Let $\sum_{n=0}^{\infty} a_n$ be a series of real numbers which is conditionally
+    convergent, but not absolutely convergent. Define the sets $A^+ := \{n \in \naturals : a_n > 0\}$
+    and $A^- := \{n \in \naturals : a_n < 0\}$, thus $A^+ \cup A^- = \naturals$ and $A^+ \cap A^- = \emptyset$.
+    Then both of the series $\sum_{n \in A^+} a_n$ and $\sum_{n \in A^-} a_n$ are not absolutely convergent.}
+\end{lemma}
+
+\begin{theorem}{A1.8.2.8}
+    \emph{Let $\sum_{n=0}^{\infty} a_n$ be a series which is conditionally convergent,
+    but not absolutely convergent, and let $L$ be any real number. Then there exists
+    a bijection $f: \naturals \to \naturals$ such that $\sum_{n=0}^{\infty} a_{f(n)}$
+    converges conditionally to $L$.}
+\end{theorem}
