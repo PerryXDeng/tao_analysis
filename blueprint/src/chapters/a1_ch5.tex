@@ -1,0 +1,512 @@
+\section{The real numbers}\label{a1-ch5}
+\subsection{Cauchy sequences}
+\begin{definition}{1}
+    \label{rat-sequence}
+    \uses{integer,rational}
+    \lean{Chapter5.Sequence}
+    (Sequences) Let $m$ be an integer. A \emph{sequence $(a_n)_{n=m}^{\infty}$ of
+    rational numbers} is any function from the set $\{n \in \Z: n \geq m\}$ to
+    $\Q$, i.e., a mapping which assigns to each integer $n$ greater than or equal
+    to $m$, a rational number $a_n$. More informally, a sequence $(a_n)_{n=0}^{\infty}$
+    of rational numbers is a collection of rationals $a_m, a_{m+1}, a_{m+2}, \ldots$.
+\end{definition}
+
+\begin{definition}{3}
+    \label{eps-steady}
+    \uses{rat-sequence,rat-eps-close}
+    \lean{Rat.Steady}
+    ($\epsilon$-steadiness) Let $\epsilon > 0$ be a positive rational number. A sequence
+    $(a_n)_{n=0}^{\infty}$ is said to be \emph{$\epsilon$-steady} iff each pair $a_j, a_k$
+    of sequence elements is $\epsilon$-close for every natural number $j, k$. In other
+    words, the sequence $a_0, a_1, a_2, \ldots$ is $\epsilon$-steady iff $|a_j - a_k| \leq \epsilon$
+    for all $j, k \geq 0$.
+\end{definition}
+
+\begin{definition}{6}
+    \label{eventually-eps-steady}
+    \uses{eps-steady}
+    \lean{Rat.EventuallySteady}
+    (Eventual $\epsilon$-steadiness) Let $\epsilon > 0$. A sequence $(a_n)_{n=0}^{\infty}$ is
+    said to be \emph{eventually $\epsilon$-steady} iff the sequence $a_N, a_{N+1}, a_{N+2}, \ldots$
+    is $\epsilon$-steady for some natural number $N \geq 0$. In other words, the sequence
+    $a_0, a_1, a_2, \ldots$ is eventually $\epsilon$-steady iff there exists an $N \geq 0$
+    such that $|a_j - a_k| \leq \epsilon$ for all $j, k \geq N$.
+\end{definition}
+
+\begin{definition}{8}
+    \label{rat-cauchy-sequence}
+    \uses{eventually-eps-steady}
+    \lean{Chapter5.Sequence.IsCauchy}
+    (Cauchy sequences) A sequence $(a_n)_{n=0}^{\infty}$ of rational numbers is said
+    to be a \emph{Cauchy sequence} iff for every positive rational number $\epsilon > 0$,
+    the sequence $(a_n)_{n=0}^{\infty}$ is eventually $\epsilon$-steady. In other words,
+    the sequence $a_0, a_1, a_2, \ldots$ is a Cauchy sequence iff for every $\epsilon > 0$,
+    there exists an $N \geq 0$ such that $d(a_j, a_k) \leq \epsilon$ for all $j, k \geq N$.
+\end{definition}
+
+\begin{proposition}{11}
+    \label{harmonic-cauchy}
+    \uses{rat-cauchy-sequence}
+    \lean{Chapter5.Sequence.IsCauchy.harmonic}
+    The sequence $a_1, a_2, a_3, \ldots$ defined by $a_n := 1/n$ (i.e., the sequence
+    $1, 1/2, 1/3, \ldots$) is a Cauchy sequence.
+\end{proposition}
+
+\begin{definition}{12}
+    \label{rat-bounded-sequence}
+    \uses{rat-sequence}
+    \lean{Chapter5.Sequence.BoundedBy,Chapter5.Sequence.IsBounded}
+    (Bounded sequences) Let $M \geq 0$ be rational. A finite sequence
+    $a_1, a_2, a_3, \ldots, a_n$ is \emph{bounded by $M$} iff $|a_i| \leq M$ for
+    all $1 \leq i \leq n$. An infinite sequence $(a_n)_{n=1}^{\infty}$ is \emph{bounded
+    by $M$} iff $|a_i| \leq M$ for all $i \geq 1$. A sequence is said to be
+    \emph{bounded} iff it is bounded by some $M \geq 0$.
+\end{definition}
+
+\begin{lemma}{14}
+    \label{finite-seq-bounded}
+    \uses{rat-bounded-sequence}
+    \lean{Chapter5.IsBounded.finite}
+    (Finite sequences are bounded) \emph{Every finite sequence $a_1, a_2, a_3, \ldots, a_n$
+    is bounded.}
+\end{lemma}
+
+\begin{lemma}{15}
+    \label{rat-cauchy-bounded}
+    \uses{rat-cauchy-sequence,rat-bounded-sequence}
+    \lean{Chapter5.Sequence.isBounded_of_isCauchy}
+    (Cauchy sequences are bounded) \emph{Every Cauchy sequence $(a_n)_{n=1}^{\infty}$
+    is bounded.}
+\end{lemma}
+
+\subsection{Equivalent Cauchy sequences}
+\begin{definition}{1}
+    \label{eps-close-seqs}
+    \uses{rat-sequence}
+    \lean{Rat.CloseSeq}
+    ($\epsilon$-close sequences) Let $(a_n)_{n=0}^{\infty}$ and $(b_n)_{n=0}^{\infty}$ be
+    two sequences, and let $\epsilon > 0$. We say that the sequence $(a_n)_{n=0}^{\infty}$
+    is \emph{$\epsilon$-close} to $(b_n)_{n=0}^{\infty}$ iff $a_n$ is $\epsilon$-close to $b_n$
+    for each $n \in \N$. In other words, $a_0, a_1, a_2, \ldots$ is $\epsilon$-close
+    to $b_0, b_1, b_2, \ldots$ iff $|a_n - b_n| \leq \epsilon$ for all $n = 0, 1, 2, \ldots$.
+\end{definition}
+
+\begin{definition}{3}
+    \label{eventually-eps-close-seqs}
+    \uses{eps-close-seqs}
+    \lean{Rat.EventuallyClose}
+    (Eventually $\epsilon$-close sequences) Let $(a_n)_{n=0}^{\infty}$ and $(b_n)_{n=0}^{\infty}$
+    be two sequences. We say that the sequence $(a_n)_{n=0}^{\infty}$ is \emph{eventually
+    $\epsilon$-close} to $(b_n)_{n=0}^{\infty}$ iff there exists an $N \geq 0$ such that
+    the sequences $(a_n)_{n=N}^{\infty}$ and $(b_n)_{n=N}^{\infty}$ are $\epsilon$-close.
+    In other words, $a_0, a_1, a_2, \ldots$ is eventually $\epsilon$-close to $b_0, b_1, b_2, \ldots$
+    iff there exists an $N \geq 0$ such that $|a_n - b_n| \leq \epsilon$ for all $n \geq N$.
+\end{definition}
+
+\begin{definition}{6}
+    \label{equivalent-seqs}
+    \uses{eventually-eps-close-seqs}
+    \lean{Chapter5.Sequence.Equiv}
+    (Equivalent sequences) Two sequences $(a_n)_{n=0}^{\infty}$ and $(b_n)_{n=0}^{\infty}$
+    are \emph{equivalent} iff for each rational $\epsilon > 0$, the sequences are eventually
+    $\epsilon$-close. In other words, $a_0, a_1, a_2, \ldots$ and $b_0, b_1, b_2, \ldots$
+    are equivalent iff for every $\epsilon > 0$, there exists an $N \geq 0$ such that
+    $|a_n - b_n| \leq \epsilon$ for all $n \geq N$.
+\end{definition}
+
+\begin{proposition}{8}
+    \label{equivalent-seqs-example}
+    \uses{equivalent-seqs}
+    \lean{Chapter5.Sequence.equiv_example}
+    \emph{Let $(a_n)_{n=0}^{\infty}$ and $(b_n)_{n=0}^{\infty}$ be the sequences
+    $a_n = 1 + 10^{-n}$ and $b_n = 1 - 10^{-n}$. Then the sequences $a_n$, $b_n$
+    are equivalent.}
+\end{proposition}
+
+\subsection{The construction of the real numbers}
+\begin{definition}{1}
+    \label{real-number}
+    \uses{rat-cauchy-sequence,equivalent-seqs}
+    \lean{Chapter5.Real.LIM_eq_LIM}
+    (Real numbers) A \emph{real number} is defined to be an object of the form
+    $\formallimit{a_n}$, where $(a_n)_{n=1}^{\infty}$ is a Cauchy sequence
+    of rational numbers. Two real numbers $\formallimit{a_n}$ and
+    $\formallimit{b_n}$ are said to be equal iff $(a_n)_{n=1}^{\infty}$
+    and $(b_n)_{n=1}^{\infty}$ are equivalent Cauchy sequences. The set of all
+    real numbers is denoted $\reals$.
+\end{definition}
+
+\begin{proposition}{2}
+    \label{formal-limit-equality}
+    \uses{real-number}
+    \lean{Chapter5.CauchySequence.instSetoid}
+    (Formal limits are well-defined) \emph{Let $x = \formallimit{a_n}, y = \formallimit{b_n}$
+    and $z = \formallimit{c_n}$ be real numbers. Then, with the above definition
+    of equality, we have $x = x$. Also, if $x = y$, then $y = x$. Finally, if
+    $x = y$ and $y = z$, then $x = z$.}
+\end{proposition}
+
+\begin{definition}{4}
+    \label{real-addition}
+    \uses{real-number}
+    \lean{Chapter5.Real.add_inst,Chapter5.Real.LIM_add}
+    (Addition of reals) Let $x = \formallimit{a_n}$ and $y = \formallimit{b_n}$
+    be real numbers. Then we define the sum $x + y$ to be $x + y := \formallimit{a_n + b_n}$.
+\end{definition}
+
+\begin{lemma}{6}
+    \label{cauchy-sum}
+    \uses{real-addition,rat-cauchy-sequence}
+    \lean{Chapter5.Sequence.IsCauchy.add}
+    (Sum of Cauchy sequences is Cauchy) \emph{Let $x = \formallimit{a_n}$ and $y = \formallimit{b_n}$
+    be real numbers. Then $x + y$ is also a real number (i.e. $(a_n + b_n)_{n = 1}^{\infty}$
+    is a Cauchy sequence of rationals).}
+\end{lemma}
+
+\begin{lemma}{7}
+    \label{cauchy-sum-equivalent}
+    \uses{real-addition}
+    \lean{Chapter5.Sequence.add_equiv}
+    (Sums of equivalent Cauchy sequences are equivalent) \emph{Let $x = \formallimit{a_n}$
+    , $y = \formallimit{b_n}$, and $x' = \formallimit{a_n'}$ be real numbers.
+    Suppose that $x = x'$. Then we have $x + y = x' + y$.}
+\end{lemma}
+
+\begin{definition}{9}
+    \label{real-multiplication}
+    \uses{real-number}
+    \lean{Chapter5.Real.mul_inst}
+    (Multiplication of reals) Let $x = \formallimit{a_n}$ and $y = \formallimit{b_n}$
+    be real numbers. Then we define the product $xy$ to be $xy := \formallimit{a_n b_n}$.
+\end{definition}
+
+\begin{lemma}{10}
+    \label{real-multiplication-well-defined}
+    \uses{real-multiplication}
+    \lean{Chapter5.Sequence.IsCauchy.mul,Chapter5.Sequence.mul_equiv}
+    (Multiplication is well defined) \emph{Let $x = \formallimit{a_n}$, $y = \formallimit{b_n}$
+    , and $x' = \formallimit{a_n'}$, be real numbers.
+    Then $xy$ is also a real number. Furthermore, if $x = x'$, then $xy = x'y$.}
+\end{lemma}
+
+\begin{proposition}{11}
+    \label{real-algebra-laws}
+    \uses{real-addition,real-multiplication,int-algebra-laws}
+    \emph{All the laws of algebra from Proposition~\ref{int-algebra-laws} hold not only for the integers,
+    but for the reals as well.}
+\end{proposition}
+
+\begin{definition}{12}
+    \label{bounded-away-zero}
+    \uses{rat-sequence}
+    (Sequences bounded away from zero) A sequence $(a_n)_{n=1}^{\infty}$ of rational
+    numbers is said to be \emph{bounded away from zero} iff there exists a rational
+    number $c > 0$ such that $|a_n| \geq c$ for all $n \geq 1$.
+\end{definition}
+
+\begin{lemma}{14}
+    \label{nonzero-bounded-away-zero}
+    \uses{real-number,bounded-away-zero}
+    \lean{Chapter5.Real.boundedAwayZero_of_nonzero}
+    \emph{Let $x$ be a non-zero real number. Then $x = \formallimit{a_n}$ for
+    some Cauchy sequence $(a_n)_{n=1}^{\infty}$ which is bounded away from zero.}
+\end{lemma}
+
+\begin{lemma}{15}
+    \label{reciprocal-cauchy}
+    \uses{rat-cauchy-sequence,bounded-away-zero}
+    \lean{Chapter5.Real.inv_isCauchy_of_boundedAwayZero}
+    \emph{Suppose that $(a_n)_{n=1}^{\infty}$ is a Cauchy sequence which is bounded
+    away from zero. Then the sequence $(a_n^{-1})_{n=1}^{\infty}$ is also a Cauchy
+    sequence.}
+\end{lemma}
+
+\begin{definition}{16}
+    \label{real-reciprocal}
+    \uses{nonzero-bounded-away-zero,reciprocal-cauchy}
+    (Reciprocal of real numbers) Let $x$ be a non-zero real number. Let $(a_n)_{n=1}^{\infty}$
+    be a Cauchy sequence bounded away from zero such that $x = \formallimit{a_n}$
+    (such a sequence exists by Lemma~\ref{nonzero-bounded-away-zero}). Then we define the reciprocal $1/x$
+    by the formula $x^{-1} := \formallimit{a_n^{-1}}$. (From Lemma~\ref{reciprocal-cauchy} we know that
+    $x^{-1}$ is a real number.)
+\end{definition}
+
+\begin{lemma}{17}
+    \label{real-reciprocal-well-defined}
+    \uses{real-reciprocal}
+    \lean{Chapter5.Real.inv_of_equiv}
+    (Reciprocation is well defined) \emph{Let $(a_n)_{n=1}^{\infty}$ and $(b_n)_{n=1}^{\infty}$
+    be two Cauchy sequences bounded away from zero such that $\formallimit{a_n} = \formallimit{b_n}$.
+    Then $\formallimit{a_n^{-1}} = \formallimit{b_n^{-1}}$.}
+\end{lemma}
+
+\subsection{Ordering the reals}
+\begin{definition}{1}
+    \label{bounded-away-pos-neg}
+    \uses{rat-sequence}
+    \lean{Chapter5.BoundedAwayPos,Chapter5.BoundedAwayNeg}
+    Let $(a_n)_{n=1}^{\infty}$ be a sequence of rationals. We say that this sequence
+    is \emph{positively bounded away from zero} iff we have a positive rational
+    $c > 0$ such that $a_n \geq c$ for all $n \geq 1$ (in particular, the sequence
+    is entirely positive). The sequence is \emph{negatively bounded away from zero}
+    iff we have a negative rational $c < 0$ such that $a_n \leq c$ for all $n \geq 1$
+    (in particular, the sequence is entirely negative).
+\end{definition}
+
+\begin{definition}{2}
+    \label{real-positive}
+    \uses{real-number,bounded-away-pos-neg}
+    \lean{Chapter5.Real.IsPos,Chapter5.Real.IsNeg}
+    A real number $x$ is said to be \emph{positive} iff it can be written as
+    $x = \formallimit{a_n}$ for some Cauchy sequence $(a_n)_{n=1}^{\infty}$ which
+    is positively bounded away from zero. $x$ is said to be \emph{negative} iff
+    it can be written as $x = \formallimit{a_n}$ for some Cauchy sequence
+    $(a_n)_{n=1}^{\infty}$ which is negatively bounded away from zero.
+\end{definition}
+
+\begin{proposition}{4}
+    \label{real-positive-properties}
+    \uses{real-positive,real-addition,real-multiplication}
+    \lean{Chapter5.Real.trichotomous,Chapter5.Real.neg_iff_pos_of_neg,Chapter5.Real.pos_add,Chapter5.Real.pos_mul}
+    (Basic properties of positive reals) \emph{For every real number $x$, exactly
+    one of the following three statements is true: (a) $x$ is zero; (b) $x$ is
+    positive; (c) $x$ is negative. A real number $x$ is negative iff $-x$ is positive.
+    If $x$ and $y$ are positive, then so are $x + y$ and $xy$.}
+\end{proposition}
+
+\begin{definition}{5}
+    \label{real-abs}
+    \uses{real-positive}
+    \lean{Chapter5.Real.abs}
+    (Absolute value) Let $x$ be a real number. We define the \emph{absolute value}
+    $|x|$ of $x$ to equal $x$ if $x$ is positive, $-x$ if $x$ is negative, and $0$
+    when $x$ is zero.
+\end{definition}
+
+\begin{definition}{6}
+    \label{real-order}
+    \uses{real-positive,real-addition}
+    \lean{Chapter5.Real.instLT,Chapter5.Real.instLE}
+    (Ordering of the real numbers) Let $x$ and $y$ be real numbers. We say that
+    $x$ is \emph{greater than} $y$, and write $x > y$, iff $x - y$ is a positive
+    real number, and $x < y$ iff $x - y$ is a negative real number. We define
+    $x \geq y$ iff $x > y$ or $x = y$, and similarly define $x \leq y$.
+\end{definition}
+
+\begin{proposition}{7}
+    \label{real-order-laws}
+    \uses{real-order,rat-order-properties}
+    \emph{All the claims in Proposition~\ref{rat-order-properties} which held for rationals, continue
+    to hold for real numbers.}
+\end{proposition}
+
+\begin{proposition}{8}
+    \label{real-reciprocal-order}
+    \uses{real-order,real-reciprocal}
+    \lean{Chapter5.Real.inv_of_pos}
+    \emph{Let $x$ be a positive real number. Then $x^{-1}$ is also positive. Also,
+    if $y$ is another positive number and $x > y$, then $x^{-1} < y^{-1}$.}
+\end{proposition}
+
+\begin{proposition}{9}
+    \label{nonneg-reals-closed}
+    \uses{real-number,real-order}
+    \lean{Chapter5.Real.LIM_of_nonneg}
+    (The non-negative reals are closed) \emph{Let $a_1, a_2, a_3, \ldots$ be a
+    Cauchy sequence of non-negative rational numbers. Then $\formallimit{a_n}$ is
+    a non-negative real number.}
+\end{proposition}
+
+\begin{corollary}{10}
+    \label{formal-limit-monotone}
+    \uses{real-number,real-order}
+    \lean{Chapter5.Real.LIM_mono}
+    \emph{Let $(a_n)_{n=1}^{\infty}$ and $(b_n)_{n=1}^{\infty}$ be Cauchy sequences
+    of rationals such that $a_n \geq b_n$ for all $n \geq 1$. Then $\formallimit{a_n}
+    \geq \formallimit{b_n}$.}
+\end{corollary}
+
+\begin{proposition}{12}
+    \label{reals-bounded-by-rationals}
+    \uses{real-order}
+    \lean{Chapter5.Real.exists_rat_le_and_nat_gt}
+    (Bounding of reals by rationals) \emph{Let $x$ be a positive real number. Then
+    there exists a positive rational number $q$ such that $q < x$, and there exists
+    a positive integer $N$ such that $x \leq N$.}
+\end{proposition}
+
+\begin{corollary}{13}
+    \label{archimedean}
+    \uses{real-order,real-multiplication}
+    \lean{Chapter5.Real.le_mul}
+    (Archimedean property) \emph{Let $x$ and $\epsilon$ be any positive
+    real numbers. Then there exists a positive integer $M$ such that $M\epsilon \geq x$.}
+\end{corollary}
+
+\begin{proposition}{14}
+    \label{rationals-dense}
+    \uses{real-order}
+    \lean{Chapter5.Real.rat_between}
+    \emph{Given any two real numbers $x < y$, we can find a rational number $q$
+    such that $x < q < y$.}
+\end{proposition}
+
+\subsection{The least upper bound property}
+\begin{definition}{1}
+    \label{upper-bound}
+    \uses{real-order}
+    \lean{Chapter5.Real.upperBound_def}
+    (Upper bound) Let $E$ be a subset of $\reals$, and let $M$ be a real number. We
+    say that $M$ is an \emph{upper bound} for $E$ iff we have $x \leq M$ for every
+    $x \in E$.
+\end{definition}
+
+\begin{definition}{5}
+    \label{least-upper-bound}
+    \uses{upper-bound}
+    \lean{Chapter5.Real.isLUB_def}
+    (Least upper bound) Let $E$ be a subset of $\reals$, and $M$ be a real number.
+    We say that $M$ is a \emph{least upper bound} for $E$ iff (a) $M$ is an upper
+    bound for $E$, and also (b) any other upper bound $M'$ for $E$ must be larger
+    than or equal to $M$.
+\end{definition}
+
+\begin{proposition}{8}
+    \label{lub-unique}
+    \uses{least-upper-bound}
+    \lean{Chapter5.Real.LUB_unique}
+    (Uniqueness of least upper bound) \emph{Let $E$ be a subset of $\reals$. Then $E$
+    can have at most one least upper bound.}
+\end{proposition}
+
+\begin{theorem}{9}
+    \label{lub-exists}
+    \uses{least-upper-bound}
+    \lean{Chapter5.Real.LUB_exist}
+    (Existence of least upper bound) \emph{Let $E$ be a non-empty subset of $\reals$.
+    If $E$ has an upper bound, (i.e., $E$ has some upper bound $M$), then it must
+    have exactly one least upper bound.}
+\end{theorem}
+
+\begin{definition}{10}
+    \label{supremum}
+    \uses{least-upper-bound,lub-exists}
+    \lean{Chapter5.ExtendedReal.sup}
+    (Supremum) Let $E$ be a subset of the real numbers. If $E$ is non-empty and
+    has some upper bound, then we define $\supremum{E}$ to the least upper bound of $E$
+    (this is well-defined by Theorem~\ref{lub-exists}). We introduce two additional symbols,
+    $+\infty$ and $-\infty$. If $E$ is non-empty and has no upper bound, we set
+    $\supremum{E} := +\infty$; if $E$ is empty, we set $\supremum{E} := -\infty$.
+    We refer to $\supremum{E}$ as the \emph{supremum} of $E$.
+\end{definition}
+
+\begin{proposition}{12}
+    \label{sqrt-two-exists}
+    \uses{real-multiplication,real-order}
+    \lean{Chapter5.Real.exist_sqrt_two}
+    \emph{There exists a positive real number $x$ such that $x^2 = 2$.}
+\end{proposition}
+
+\subsection{Real exponentiation, part I}
+\begin{definition}{1}
+    \label{real-pow-nat}
+    \uses{real-multiplication}
+    \lean{Chapter5.Real.pow_zero,Chapter5.Real.pow_succ}
+    (Exponentiating a real by a natural number) Let $x$ be a real number. To
+    raise $x$ to the power $0$, we define $x^0 := 1$. Now suppose recursively
+    that $x^n$ has been defined for some natural number $n$, then we define
+    $x^{n+1} := x^n \times x$.
+\end{definition}
+
+\begin{definition}{2}
+    \label{real-pow-int}
+    \uses{real-pow-nat,real-reciprocal}
+    \lean{Chapter5.Real.zpow_zero}
+    (Exponentiation a real by an integer) Let $x$ be a non-zero real number.
+    Then for any negative integer $-n$, we define $x^{-n} := 1/x^n$.
+\end{definition}
+
+\begin{proposition}{3}
+    \label{real-pow-int-laws}
+    \uses{real-pow-int,rat-pow-nat-laws,rat-pow-int-laws}
+    \emph{All the properties in Propositions~\ref{rat-pow-nat-laws} and \ref{rat-pow-int-laws} remain valid if
+    $x$ and $y$ are assumed to be real numbers instead of rational numbers.}
+\end{proposition}
+
+\begin{definition}{4}
+    \label{real-nth-root}
+    \uses{supremum,real-pow-nat,real-order}
+    \lean{Chapter5.Real.root}
+    Let $x \geq 0$ be a non-negative real, and let $n \geq 1$ be a positive integer.
+    We define $x^{1/n}$, also known as the $n^{\text{th}}$ \emph{root} of $x$,
+    by the formula
+    \begin{equation*}
+        x^{1/n} := \supremum{\{y \in \reals: y \geq 0 \text{ and } y^n \leq x\}}.
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}{5}
+    \label{nth-root-exists}
+    \uses{real-nth-root,upper-bound}
+    \lean{Chapter5.Real.rootset_nonempty}
+    (Existence of $n^{\text{th}}$ roots) \emph{Let $x \geq 0$ be a non-negative
+    real, and let $n \geq 1$ be a positive integer. Then the set $E := \{y \in \reals: y \geq 0 \text{ and } y^n \leq x\}$
+    is non-empty and bounded above. In particular, $x^{1/n}$ is a real number.}
+\end{lemma}
+
+\begin{lemma}{6}
+    \label{nth-root-properties}
+    \uses{real-nth-root}
+    \lean{Chapter5.Real.eq_root_iff_pow_eq,Chapter5.Real.root_nonneg,Chapter5.Real.root_pos,Chapter5.Real.root_mono,Chapter5.Real.root_mul,Chapter5.Real.root_root}
+    \emph{Let $x, y > 0$ be non-negative reals, and let $n, m \geq 1$ be positive
+    integers.
+    \begin{enumerate}
+        \item If $y = x^{1/n}$, then $y^n = x$.
+        \item Conversely, if $y^n = x$, then $y = x^{1/n}$.
+        \item $x^{1/n}$ is a non-negative real number, and is positive iff $x$
+        is positive.
+        \item We have $x > y$ if and only if $x^{1/n} > y^{1/n}$.
+        \item If $x > 1$, then $x^{1/k}$ is a decreasing function of $k$. If
+        $x < 1$, then $x^{1/k}$ is an increasing function of $k$. If $x = 1$,
+        then $x^{1/k} = 1$ for all $k$.
+        \item We have $(xy)^{1/n} = x^{1/n} y^{1/n}$.
+        \item We have $(x^{1/n})^m = x^{m/n}$.
+    \end{enumerate}}
+\end{lemma}
+
+\begin{definition}{7}
+    \label{real-pow-rat}
+    \uses{real-nth-root,real-pow-int}
+    \lean{Chapter5.Real.ratPow}
+    Let $x > 0$ be a positive real number, and let $q$ be a rational number. To
+    define $x^q$, we write $q=a/b$ for some integer $a$ and positive integer b,
+    and define
+    \begin{equation*}
+        x^q := (x^{1/b})^a
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}{8}
+    \label{real-pow-rat-well-defined}
+    \uses{real-nth-root,real-pow-int}
+    \lean{Chapter5.Real.pow_root_eq_pow_root}
+    \emph{Let $a$, $a'$ be integers and $b$, $b'$ be positive integers such that $a/b = a'/b'$
+    , and let $x$ be a positive real number. Then we have $(x^{1/b'})^{a'} = (x^{1/b})^a$
+    .}
+\end{lemma}
+
+\begin{lemma}{9}
+    \label{real-pow-rat-laws}
+    \uses{real-pow-rat}
+    \lean{Chapter5.Real.ratPow_pos,Chapter5.Real.ratPow_add,Chapter5.Real.ratPow_ratPow,Chapter5.Real.ratPow_neg,Chapter5.Real.ratPow_mono}
+    \emph{Let $x, y > 0$ be positive reals, and let $q, r$ be rationals.
+    \begin{enumerate}
+        \item $x^q$ is a positive real.
+        \item $x^{q+r} = x^q x^r$ and $(x^q)^r = x^{qr}$
+        \item $x^{-q} = 1/x^q$
+        \item If $q > 0$, then $x > y$ if and only if $x^q > y^q$
+        \item If $x > 1$, then $x^q > x^r$ if and only if $q > r$. If $x < 1$,
+        then $x^q > x^r$ if and only if $q < r$.
+    \end{enumerate}
+    }
+\end{lemma}

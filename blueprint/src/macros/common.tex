@@ -1,0 +1,64 @@
+% Shared by print.tex (pdflatex) and web.tex (plasTeX).
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\longdash}{\text{\textemdash}}
+\newcommand{\formallimit}[1]{\text{LIM}_{n \rightarrow \infty}{#1}}
+\newcommand{\supremum}[1]{\text{sup}{(#1)}}
+\newcommand{\infimum}[1]{\text{inf}{(#1)}}
+\newcommand{\limitsuperior}[1]{\text{lim sup}_{n \rightarrow \infty}{#1}}
+\newcommand{\limitinferior}[1]{\text{lim inf}_{n \rightarrow \infty}{#1}}
+\newcommand{\limit}[1]{\text{lim}_{n \rightarrow \infty}{#1}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\extendedreals}{\mathbb{R}^*}
+
+% --------------------------------------------------------------
+% Statement environments.
+%
+%   \begin{definition}{8}        <- item number as printed in the book
+%     \label{rat-cauchy-sequence} <- semantic key; the only thing anything links to
+%     \uses{eventually-eps-steady}
+%     \lean{Chapter5.Sequence.IsCauchy}\leanok
+%     ...
+%   \end{definition}
+%
+% Displayed as "Definition 5.1.8": the "5.1" prefix comes from the enclosing
+% \section (book chapter) and \subsection (book section), so it can't drift.
+% Axioms (and Assumption 2.6) share one counter per chapter in the book, so they
+% take no number at all: \begin{axiom} ... \end{axiom} -> "Axiom 2.3".
+% --------------------------------------------------------------
+
+\theoremstyle{definition}
+\newcounter{bookitem}[subsection]
+\renewcommand{\thebookitem}{\thesubsection.\arabic{bookitem}}
+\newcommand{\bookitemname}{} % plasTeX looks these up for the shared counters
+\newcommand{\axiomname}{}
+
+\newtheorem{definitionx}[bookitem]{Definition}
+\newtheorem{lemmax}[bookitem]{Lemma}
+\newtheorem{propositionx}[bookitem]{Proposition}
+\newtheorem{theoremx}[bookitem]{Theorem}
+\newtheorem{corollaryx}[bookitem]{Corollary}
+\newtheorem{remarkx}[bookitem]{Remark}
+\newtheorem{examplesx}[bookitem]{Examples}
+\newtheorem{exercisex}[bookitem]{Exercise}
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{assumption}[axiom]{Assumption}
+
+% Set the counter so the next step lands on the book's number.
+\newcommand{\setbookitem}[1]{\setcounter{bookitem}{#1}\addtocounter{bookitem}{-1}}
+
+\newenvironment{definition}[1]{\setbookitem{#1}\begin{definitionx}}{\end{definitionx}}
+\newenvironment{lemma}[1]{\setbookitem{#1}\begin{lemmax}}{\end{lemmax}}
+\newenvironment{proposition}[1]{\setbookitem{#1}\begin{propositionx}}{\end{propositionx}}
+\newenvironment{theorem}[1]{\setbookitem{#1}\begin{theoremx}}{\end{theoremx}}
+\newenvironment{corollary}[1]{\setbookitem{#1}\begin{corollaryx}}{\end{corollaryx}}
+\newenvironment{remark}[1]{\setbookitem{#1}\begin{remarkx}}{\end{remarkx}}
+\newenvironment{examples}[1]{\setbookitem{#1}\begin{examplesx}}{\end{examplesx}}
+\newenvironment{exercise}[1]{\setbookitem{#1}\begin{exercisex}}{\end{exercisex}}

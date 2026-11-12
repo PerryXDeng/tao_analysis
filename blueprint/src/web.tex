@@ -1,0 +1,19 @@
+% HTML build: plastex -c plastex.cfg web.tex
+\documentclass{article}
+
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage[showmore,
+  thms=definitionx+lemmax+propositionx+theoremx+corollaryx+assumption+remarkx+examplesx+exercisex+axiom]{blueprint}
+
+\input{macros/common}
+
+% Level 1 Lean links: point at Tao's hosted companion docs; nothing is checked.
+\dochome{https://teorth.github.io/analysis/docs}
+
+\title{Axioms, Definitions, Lemmas, Propositions, and Theorems in Analysis}
+
+\begin{document}
+\maketitle
+\input{content}
+\end{document}

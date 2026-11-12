@@ -1,0 +1,22 @@
+% LaTeX-side stand-in for the leanblueprint package, used by print.tex.
+% plasTeX (web.tex) uses the real Python implementation instead of this file.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{blueprint}
+\DeclareOption*{}
+\ProcessOptions\relax
+
+% \uses{a,b} prints a small clickable "[uses 5.1.6, 5.1.3]" in the PDF.
+\newcommand{\uses}[1]{%
+  \edef\bp@list{\zap@space#1 \@empty}%
+  \def\bp@sep{}%
+  {\footnotesize[uses~\@for\bp@x:=\bp@list\do{\bp@sep\ref{\bp@x}\def\bp@sep{, }}]}~}
+
+\newcommand{\proves}[1]{}
+\newcommand{\lean}[1]{}
+\newcommand{\leanok}{}
+\newcommand{\mathlibok}{}
+\newcommand{\notready}{}
+\newcommand{\discussion}[1]{}
+\newcommand{\home}[1]{}
+\newcommand{\github}[1]{}
+\newcommand{\dochome}[1]{}

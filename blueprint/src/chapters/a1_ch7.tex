@@ -1,0 +1,439 @@
+\section{Series}\label{a1-ch7}
+\subsection{Finite series}
+\begin{definition}{1}
+    \label{finite-series}
+    \uses{recursive-definitions}
+    \lean{Finset.sum_of_empty,Finset.sum_of_nonempty}
+    (Finite series) Let $m, n$ be integers, and let $(a_i)_{i=m}^{\infty}$ be a
+    finite sequence of real numbers, assigning a real number $a_i$ to each
+    integer $i$ between $m$ and $n$ inclusive (i.e. $m \leq i \leq n$). Then
+    we define the finite sum (or finite series) $\sum_{i=m}^{n} a_i$ by the
+    recursive formula
+    \begin{align*}
+        \sum_{i=m}^{m} a_i &:= 0 \text{whenever $n < m$;} \\
+        \sum_{i=m}^{n+1} a_i &:= \sum_{i=m}^{n} a_i + a_{n+1} \text{whenever $n > m - 1$.}
+    \end{align*}
+\end{definition}
+
+\begin{lemma}{4}
+    \label{finite-series-properties}
+    \uses{finite-series}
+    \emph{
+    \begin{enumerate}
+        \item Let $m \leq n < p$ be integers, and let $a_i$ be a real number
+        assigned to each integer $m \leq i \leq p$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i + \sum_{i=n+1}^{p} a_i = \sum_{i=m}^{p} a_i.
+        \end{equation*}
+        \item Let $m \leq n$ be integers, $k$ be another integer, and let $a_i$
+        be a real number assigned to each integer $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i = \sum_{j=m+k}^{n+k} a_{j-k}.
+        \end{equation*}
+        \item Let $m \leq n$ be integers, and let $a_i, b_i$ be real numbers assigned
+        to each integer $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} (a_i + b_i) = (\sum_{i=m}^{n} a_i) + (\sum_{i=m}^{n} b_i).
+        \end{equation*}
+        \item Let $m \leq n$ be integers, and let $a_i$ be a real number assigned
+        to each integer $m \leq i \leq n$, and let $c$ be another real number. Then
+        have
+        \begin{equation*}
+            \sum_{i=m}^{n} (ca_i) = c(\sum_{i=m}^{n} a_i).
+        \end{equation*}
+        \item (Triangle inequality for finite series) Let $m \leq n$ be integers, and
+        let $a_i$ be a real number assigned to each integer $m \leq i \leq n$. Then
+        we have
+        \begin{equation*}
+            |\sum_{i=m}^{n} a_i| \leq \sum_{i=m}^{n} |a_i|.
+        \end{equation*}
+        \item (Comparison test for finite series) Let $m \leq n$ be integers, and
+        let $a_i, b_i$ be real numbers assigned to each integer $m \leq i \leq n$.
+        Suppose that $a_i \leq b_i$ for all $m \leq i \leq n$. Then we have
+        \begin{equation*}
+            \sum_{i=m}^{n} a_i \leq \sum_{i=m}^{n} b_i.
+        \end{equation*}
+    \end{enumerate}
+    }
+\end{lemma}
+
+\begin{definition}{6}
+    \label{finite-set-sum}
+    \uses{finite-series,cardinality-n,bijective}
+    \lean{Finset.finite_series_eq}
+    (Summation over finite sets) Let $X$ be a finite set with $n$ elements (where
+    $n \in \naturals$), and let $f: X \rightarrow \reals$ be a function from $X$
+    to the real numbers (i.e., $f$ assigns a real number $f(x)$ to each element
+    $x$ of $X$). Then we can define the finite sum $\sum_{x \in X} f(x)$ as follows.
+    We first select any bijection $g$ from $\{i \in \naturals : 1 \leq i \leq n\}$
+    to $X$; such a bijection exists since $X$ is assumed to have n elements. We
+    then define
+    \begin{equation*}
+        \sum_{x \in X} f(x) := \sum_{i=1}^{n} f(g(i)).
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}{7}
+    \label{finite-set-sum-well-defined}
+    \uses{finite-set-sum}
+    (Summation over finite sets is well-defined) \emph{Let $X$ be a finite set
+    with $n$ elements, let $f: X \rightarrow \reals$ be a function, and let $g: \{i \in \naturals : 1 \leq i \leq n\} \rightarrow X$
+    and $h: \{i \in \naturals : 1 \leq i \leq n\} \rightarrow X$ be bijections.
+    Then we have
+    \begin{equation*}
+        \sum_{x \in X} f(x) = \sum_{i=1}^{n} f(g(i)) = \sum_{i=1}^{n} f(h(i)).
+    \end{equation*}}
+\end{proposition}
+
+\begin{proposition}{11}
+    \label{finite-set-sum-properties}
+    \uses{finite-set-sum}
+    \lean{Finset.finite_series_of_empty,Finset.finite_series_of_singleton,Finset.finite_series_of_disjoint_union,Finset.finite_series_of_add,Finset.finite_series_of_const_mul,Finset.finite_series_of_le'}
+    (Basic properties of summation over finite sets) \emph{
+    \begin{enumerate}
+        \item If $X$ is empty, and $f: X \rightarrow \reals$ is a function (i.e.,
+        $f$ is the empty function), we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) = 0.
+        \end{equation*}
+        \item If $X$ consists of a single element, $X = \{x_0\}$, and $f: X \rightarrow \reals$
+        is a function, we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) = f(x_0).
+        \end{equation*}
+        \item (Substitution, part I) If $X$ is a finite set, $f: X \rightarrow \reals$
+        is a function, and $g: Y \rightarrow X$ is a bijection, then
+        \begin{equation*}
+            \sum_{x \in X} f(x) = \sum_{y \in Y} f(g(y)).
+        \end{equation*}
+        \item (Substitution, part II) Let $n \leq m$ be integers, and let $X$ be
+        the set $X := {i \in \naturals : n \leq i \leq m}$. If $a_i$ is a real number
+        assigned to each integer $i \in X$, then we have
+        \begin{equation*}
+            \sum_{i=n}^{m} a_i = \sum_{i=1}^{m-n+1} a_{n+i-1}.
+        \end{equation*}
+        \item Let $X, Y$ be disjoint finite sets (so $X \cap Y = \emptyset$), and
+        $f: X \cup Y \rightarrow \reals$ is a function. Then we have
+        \begin{equation*}
+            \sum_{z \in X \cup Y} f(z) = \sum_{x \in X} f(x) + \sum_{y \in Y} f(y).
+        \end{equation*}
+        \item (Linearity, part I) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        and $g: X \rightarrow \reals$ be functions. Then
+        \begin{equation*}
+            \sum_{x \in X} (f(x) + g(x)) = \sum_{x \in X} f(x) + \sum_{x \in X} g(x).
+        \end{equation*}
+        \item (Linearity, part II) Let $X$ be a finite set, let $f: X \rightarrow \reals$
+        be a function, and let $c$ be a real number. Then
+        \begin{equation*}
+            \sum_{x \in X} cf(x) = c \sum_{x \in X} f(x).
+        \end{equation*}
+        \item (Monothonicity) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        and $g: X \rightarrow \reals$ be functions such that $f(x) \leq g(x)$ for all
+        $x \in X$. Then we have
+        \begin{equation*}
+            \sum_{x \in X} f(x) \leq \sum_{x \in X} g(x).
+        \end{equation*}
+        \item (Triangle inequality) Let $X$ be a finite set, and let $f: X \rightarrow \reals$
+        be a function, then
+        \begin{equation*}
+            |\sum_{x \in X} f(x)| \leq \sum_{x \in X} |f(x)|.
+        \end{equation*}
+    \end{enumerate}}
+\end{proposition}
+
+\begin{lemma}{13}
+    \label{finite-sum-product}
+    \uses{finite-set-sum,cartesian-product}
+    \lean{Finset.finite_series_of_finite_series}
+    \emph{Let $X, Y$ be finite sets, and let $f: X \times Y \rightarrow \reals$
+    be a function. Then
+    \begin{equation*}
+        \sum_{x \in X} \sum_{y \in Y} f(x, y) = \sum_{y \in Y} \sum_{x \in X} f(x, y).
+    \end{equation*}}
+\end{lemma}
+
+\begin{corollary}{14}
+    \label{fubini-finite}
+    \uses{finite-sum-product}
+    \lean{Finset.finite_series_refl}
+    (Fubini's theorem for finite series) \emph{Let $X, Y$ be finite sets, and let
+    $f: X \times Y \rightarrow \reals$ be a function. Then
+    \begin{align*}
+        \sum_{x \in X} (\sum_{y \in Y} f(x, y)) &= \sum_{(x, y) \in X \times Y} f(x, y) \\
+        &= \sum_{(y, x) \in Y \times X} f(x, y) \\
+        &= \sum_{y \in Y} (\sum_{x \in X} f(x, y)).
+    \end{align*}}
+\end{corollary}
+
+\subsection{Infinite series}
+\begin{definition}{1}
+    \label{formal-series}
+    \lean{Chapter7.Series}
+    (Formal infinite series) A (formal) infinite series is any expression of the
+    form
+    \begin{equation*}
+        \sum_{n=m}^{\infty} a_n
+    \end{equation*}
+    where $m$ is an integer, and $a_n$ is a real number for any integer $n \geq m$.
+
+    We sometimes write this series as
+    \begin{equation*}
+        a_m + a_{m+1} + a_{m+2} + \ldots
+    \end{equation*}
+\end{definition}
+
+\begin{definition}{2}
+    \label{series-convergence}
+    \uses{formal-series,finite-series,limit}
+    \lean{Chapter7.Series.partial,Chapter7.Series.convergesTo,Chapter7.Series.converges}
+    (Convergence of series) Let $\sum_{n=m}^{\infty} a_n$ be a formal infinite series.
+    For any integer $N \geq m$, we define the \emph{$N^{th}$ partial sum} $S_N$ of
+    this series to be $S_N := \sum_{n=m}^{N} a_n$.; of course, $S_N$ is a real number.
+    If the sequence $(S_N)_{N=m}^{\infty}$ converges to some limit $L$ as $N \rightarrow \infty$,
+    then we say that the infinite series $\sum_{n=m}^{\infty} a_n$ is \emph{convergent},
+    and \emph{converges to $L$}; we also write $L = \sum_{n=m}^{\infty} a_n$, and
+    say that $L$ is the \emph{sum} of  the infinite series $\sum_{n=m}^{\infty} a_n$.
+    If the partial sums $(S_N)_{N=m}^{\infty}$ diverge, then we say that the infinite
+    series $\sum_{n=m}^{\infty} a_n$ is \emph{divergent}, and we do not assign any
+    real number value to that series.
+\end{definition}
+
+\begin{proposition}{5}
+    \label{series-cauchy-criterion}
+    \uses{series-convergence,reals-complete}
+    \lean{Chapter7.Series.converges_iff_tail_decay}
+    \emph{Let $\sum_{n=m}^{\infty} a_n$ be a formal series of real numbers. Then
+    $\sum_{n=m}^{\infty} a_n$ converges if and only if, for every real number
+    $\epsilon > 0$, there exists an integer $N \geq m$ such that
+    \begin{equation*}
+        |\sum_{n=p}^{q} a_n| < \epsilon \text{ for all $p, q \geq N$}.
+    \end{equation*}
+    }
+\end{proposition}
+
+\begin{corollary}{6}
+    \label{series-zero-test}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.decay_of_converges}
+    (Zero test) \emph{Let $\sum_{n=m}^{\infty} a_n$ be a convergent series of real
+    numbers. Then we must have $\limit{a_n} = 0$. To put it another way, if
+    $\limit{a_n}$ is non-zero or divergent, then the series $\sum_{n=m}^{\infty} a_n$
+    is divergent.}
+\end{corollary}
+
+\begin{definition}{8}
+    \label{absolute-convergence}
+    \uses{series-convergence,real-abs}
+    \lean{Chapter7.Series.absConverges}
+    (Absolute convergence) Let $\sum_{n=m}^{\infty} a_n$ be a formal series of real
+    numbers. We say that this series is \emph{absolutely convergent} iff the series
+    $\sum_{n=m}^{\infty} |a_n|$ is convergent.
+
+    In order to distinguish convergence from absolute convergence, we sometimes
+    refer to the former as \emph{conditional} convergence.
+\end{definition}
+
+\begin{proposition}{9}
+    \label{absolute-convergence-test}
+    \uses{absolute-convergence}
+    \lean{Chapter7.Series.converges_of_absConverges}
+    (Absolute convergence test) \emph{Let $\sum_{n=m}^{\infty} a_n$ be a formal series
+    of real numbers. If this series is absolutely convergent, then it is also
+    conditionally convergent. Furthermore, in this case we have the triangle
+    inequality
+    \begin{equation*}
+        |\sum_{n=m}^{\infty} a_n| \leq \sum_{n=m}^{\infty} |a_n|.
+    \end{equation*}}
+\end{proposition}
+
+\begin{proposition}{12}
+    \label{alternating-series-test}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.converges_of_alternating}
+    (Alternating series test) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence of real
+    numbers which are non-negative and decreasing, thus $a_n \geq 0$ and $a_{n} \geq a_{n+1}$
+    for every $n \geq m$. Then the series $\sum_{n=m}^{\infty} (-1)^n a_n$ is convergent
+    if and only if the sequence $(a_n)_{n=m}^{\infty}$ converges to zero as $n \rightarrow \infty$.}
+\end{proposition}
+
+\begin{proposition}{14}
+    \label{series-laws}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.convergesTo.add,Chapter7.Series.convergesTo.smul,Chapter7.Series.convergesTo.sub}
+    (Series laws)
+    \begin{enumerate}
+        \item If $\sum_{n=m}^{\infty} a_n$ is a series of real numbers converging
+        to $x$, and $\sum_{n=m}^{\infty} b_n$ is a series of real numbers converging
+        to $y$, then $\sum_{n=m}^{\infty} (a_n + b_n)$ is also a convergent series,
+        and converges to $x + y$. In particular, we have
+        \begin{equation*}
+            \sum_{n=m}^{\infty} (a_n + b_n) = \sum_{n=m}^{\infty} a_n + \sum_{n=m}^{\infty} b_n.
+        \end{equation*}
+        \item If $\sum_{n=m}^{\infty} a_n$ is a series of real numbers converging
+        to $x$, and $c$ is a real number, then $\sum_{n=m}^{\infty} (ca_n)$ is also
+        a convergent series, and converges to $cx$. In particular, we have
+        \begin{equation*}
+            \sum_{n=m}^{\infty} (ca_n) = c \sum_{n=m}^{\infty} a_n.
+        \end{equation*}
+        \item Let $\sum_{n=m}^{\infty} a_n$ be a series of real numbers, and let
+        $k \geq 0$ be an integer. If one of the two series $\sum_{n=m}^{\infty} a_n$
+        and $\sum_{n=m+k}^{\infty} a_n$ is convergent, then so is the other, and
+        we have the identity
+        \begin{equation*}
+            \sum_{n=m}^{\infty} a_n = \sum_{n=m}^{m+k-1} a_n + \sum_{n=m+k}^{\infty} a_n.
+        \end{equation*}
+        \item Let $\sum_{n=m}^{\infty} a_n$ be a series of real numbers converging
+        to $x$, and let $k$ be an integer. Then $\sum_{n=m+k}^{\infty} a_{n-k}$
+        also converges to $x$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{lemma}{15}
+    \label{telescoping-series}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.telescope}
+    (Telescoping series) \emph{Let $(a_n)_{n=m}^{\infty}$ be a sequence of real numbers
+    which converge to 0, i.e., $\limit{a_n} = 0$. Then the series $\sum_{n=m}^{\infty} (a_n - a_{n+1})$
+    converges to $a_0$.}
+\end{lemma}
+
+\subsection{Sums of non-negative numbers}
+\begin{proposition}{1}
+    \label{nonneg-series-bounded}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.converges_of_nonneg_iff}
+    \emph{Let $\sum_{n=m}^{\infty} a_n$ be a formal series non-negative real numbers.
+    Then the series $\sum_{n=m}^{\infty} a_n$ is convergent if and only if there
+    is a real number $M$ such that
+    \begin{equation*}
+        \sum_{n=m}^{N} a_n \leq M \text{ for all integers $N \geq m$}.
+    \end{equation*}
+    }
+\end{proposition}
+
+\begin{corollary}{2}
+    \label{comparison-test}
+    \uses{series-convergence,absolute-convergence}
+    \lean{Chapter7.Series.converges_of_le}
+    (Comparison test) \emph{Let $\sum_{n=m}^{\infty} a_n$ and $\sum_{n=m}^{\infty} b_n$
+    be two formal series of real numbers, and suppose that $|a_n| \leq b_n$
+    for all $n \geq m$. Then if $\sum_{n=m}^{\infty} b_n$ is convergent, then
+    $\sum_{n=m}^{\infty} a_n$ is absolutely convergent, and in fact
+    \begin{equation*}
+        |\sum_{n=m}^{\infty} a_n| \leq \sum_{n=m}^{\infty} |a_n| \leq \sum_{n=m}^{\infty} b_n.
+    \end{equation*}
+}
+\end{corollary}
+
+\begin{lemma}{3}
+    \label{geometric-series}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.converges_geom_iff}
+    (Geometric series) \emph{Let $x$ be a real number. If $|x| \geq 1$, then the
+    series $\sum_{n=0}^{\infty} x^n$ is divergent. If however $|x| < 1$, then
+    the series is absolutely convergent and
+    \begin{equation*}
+        \sum_{n=0}^{\infty} x^n = 1/(1-x).
+    \end{equation*}
+}
+\end{lemma}
+
+\begin{proposition}{4}
+    \label{cauchy-condensation}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.cauchy_criterion}
+    (Cauchy criterion) \emph{Let $\sum_{n=m}^{\infty} a_n$ be a decreasing sequence
+    of non-negative real numbers (so $a_n > 0$ and $a_{n+1} \leq a_n$ for all $n \geq 1$).
+    Then the series $\sum_{n=m}^{\infty} a_n$ is convergent if and only if the
+    series
+    \begin{equation*}
+        \sum_{k=0}^{\infty} 2^k a_{2^k} = a_1 + 2a_2 + 4a_4 + 8a_8 + \ldots
+    \end{equation*}
+    is convergent.}
+\end{proposition}
+
+\begin{corollary}{7}
+    \label{p-series}
+    \uses{cauchy-condensation,real-pow-rat}
+    \lean{Chapter7.Series.converges_qseries}
+    \emph{Let $q > 0$ be a rational number. Then the series $\sum_{n=0}^{\infty} 1/n^q$
+    is convergent when $q > 1$, and divergent when $q \leq 1$.}
+\end{corollary}
+
+\subsection{Rearrangement of series}
+\begin{proposition}{1}
+    \label{nonneg-rearrangement}
+    \uses{series-convergence}
+    \lean{Chapter7.Series.converges_of_permute_nonneg}
+    \emph{Let $\sum_{n=0}^{\infty} a_n$ be a convergent series of non-negative real
+    numbers, and let $f: \naturals \rightarrow \naturals$ be a bijection. Then
+    $\sum_{m=0}^{\infty} a_{f(m)}$ is also convergent, and has the same sum:
+    \begin{equation*}
+        \sum_{n=0}^{\infty} a_n = \sum_{m=0}^{\infty} a_{f(m)}.
+    \end{equation*}
+    }
+\end{proposition}
+
+\begin{proposition}{3}
+    \label{rearrangement}
+    \uses{absolute-convergence}
+    \lean{Chapter7.Series.absConverges_of_permute}
+    (Rearrangement of series) \emph{Let $\sum_{n=0}^{\infty} a_n$ be an absolutely
+    convergent series of real numbers, and let $f: \naturals \rightarrow \naturals$
+    be a bijection. Then the series $\sum_{m=0}^{\infty} a_{f(m)}$ is also absolutely
+    convergent, and has the same sum:
+    \begin{equation*}
+        \sum_{n=0}^{\infty} a_n = \sum_{m=0}^{\infty} a_{f(m)}.
+    \end{equation*}
+    }
+\end{proposition}
+
+\subsection{The root and ratio tests}
+\begin{theorem}{1}
+    \label{root-test}
+    \uses{series-convergence,limsup-liminf}
+    \lean{Chapter7.Series.root_test_pos,Chapter7.Series.root_test_neg}
+    (Root test) \emph{Let $\sum_{n=0}^{\infty} a_n$ be a series of real numbers,
+    and let $\alpha := \limsup_{n \rightarrow \infty} |a_n|^{1/n}$.
+    \begin{enumerate}
+        \item If $\alpha < 1$, then the series $\sum_{n=0}^{\infty} a_n$ is absolutely
+        convergent (and hence conditionally convergent).
+        \item If $\alpha > 1$, then the series $\sum_{n=0}^{\infty} a_n$ is not
+        conditionally convergent (and hence cannot be absolutely convergent either).
+        \item If $\alpha = 1$, we cannot assert any conclusion.
+    \end{enumerate}}
+\end{theorem}
+
+\begin{lemma}{2}
+    \label{ratio-root-inequality}
+    \uses{limsup-liminf}
+    \emph{Let $(c_n)_{n=0}^{\infty}$ be a sequence of positive numbers. Then we have
+    \begin{equation*}
+        \liminf{\frac{c_{n+1}}{c_n}} \leq \liminf{c_n^{1/n}}
+        \leq \limsup{c_n^{1/n}} \leq \limsup{\frac{c_{n+1}}{c_n}}.
+    \end{equation*}
+    }
+\end{lemma}
+
+\begin{corollary}{3}
+    \label{ratio-test}
+    \uses{series-convergence,limsup-liminf}
+    \lean{Chapter7.Series.ratio_test_pos,Chapter7.Series.ratio_test_neg}
+    (Ratio test) \emph{Let $\sum_{n=0}^{\infty} a_n$ be a series of non-zero numbers.
+    (The non-zero hypothesis is required so that the ratios $|a_{n+1}|/|a_n|$ appearing
+    below are well-defined.)
+    \begin{itemize}
+        \item If $\limsup{\frac{|a_{n+1}|}{|a_n|}} < 1$, then the series $\sum_{n=0}^{\infty} a_n$
+        is absolutely convergent (hence conditionally convergent).
+        \item If $\liminf{\frac{|a_{n+1}|}{|a_n|}} > 1$, then the series $\sum_{n=0}^{\infty} a_n$
+        is not conditionally convergent (and thus cannot be absolutely convergent).
+        \item In the remaining cases, we cannot assert any conclusion.
+    \end{itemize}}
+\end{corollary}
+
+\begin{proposition}{4}
+    \label{lim-n-root-n}
+    \uses{limit,real-nth-root}
+    \lean{Chapter7.Series.root_self_converges}
+    \emph{We have $\limit n^{1/n} = 1$.}
+\end{proposition}

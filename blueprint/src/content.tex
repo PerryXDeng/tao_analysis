@@ -1,0 +1,17 @@
+% Each chapter file holds exactly one \section, so the section counter is the
+% book's chapter number. Analysis II restarts it and prefixes "II." so its
+% numbers (II.1.2.5) can't be mistaken for Analysis I's.
+\part{Analysis I}
+\input{chapters/a1_ch1}
+\input{chapters/a1_ch2}
+\input{chapters/a1_ch3}
+\input{chapters/a1_ch4}
+\input{chapters/a1_ch5}
+\input{chapters/a1_ch6}
+\input{chapters/a1_ch7}
+\input{chapters/a1_ch8}
+
+\part{Analysis II}
+\setcounter{section}{0}
+\renewcommand{\thesection}{II.\arabic{section}}
+\input{chapters/a2_ch1}

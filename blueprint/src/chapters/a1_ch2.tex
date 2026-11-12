@@ -1,0 +1,268 @@
+\section{Natural Numbers}\label{a1-ch2}
+
+\subsection{Peano Axioms}
+\begin{axiom}
+    \label{ax-zero-nat}
+    \lean{Chapter2.Nat.instZero}
+\emph{0 is a natural number.}
+\end{axiom}
+
+\begin{axiom}
+    \label{ax-succ-nat}
+    \uses{ax-zero-nat}
+\emph{If n is a natural number, then $n++$ is also a natural number.}
+\end{axiom}
+
+\begin{definition}{3}
+    \label{nat-numerals}
+    \uses{ax-zero-nat,ax-succ-nat}
+    \lean{Chapter2.Nat.instOfNat}
+We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
+\end{definition}
+
+\begin{proposition}{4}
+    \label{three-is-nat}
+    \uses{nat-numerals,ax-succ-nat}
+\emph{3 is a natural number.}
+\end{proposition}
+
+\begin{axiom}
+    \label{ax-succ-ne-zero}
+    \uses{ax-succ-nat}
+    \lean{Chapter2.Nat.succ_ne}
+\emph{0 is not the successor of any natural number; i.e., we have $n++ \neq 0$ for every natural number n.}
+\end{axiom}
+
+\begin{proposition}{6}
+    \label{four-ne-zero}
+    \uses{ax-succ-ne-zero,nat-numerals}
+    \lean{Chapter2.Nat.four_ne}
+\emph{4 is not equal to 0.}
+\end{proposition}
+
+\begin{axiom}
+    \label{ax-succ-injective}
+    \uses{ax-succ-nat}
+    \lean{Chapter2.Nat.succ_cancel,Chapter2.Nat.succ_ne_succ}
+\emph{Different natural numbers must have different successors; i.e., if n, m are natural numbers and $n\neq m$, then $n++\neq m++$. Equivalently, if $n++ = m++$, then we must have $n=m$.}
+\end{axiom}
+
+\begin{proposition}{8}
+    \label{six-ne-two}
+    \uses{ax-succ-injective,four-ne-zero}
+    \lean{Chapter2.Nat.six_ne_two}
+\emph{6 is not equal to 2.}
+\end{proposition}
+
+\begin{axiom}
+    \label{ax-induction}
+    \uses{ax-succ-nat}
+    \lean{Chapter2.Nat.induction}
+    (Principle of mathematical induction) \emph{Let $P(n)$ be any property pertaining to a natural number n. Suppose that $P(0)$ is true, and suppose that whenever $P(n)$ is true, $P(n++)$ is also true. Then $P(n)$ is true for every natural number n.}
+\end{axiom}
+
+\begin{proposition}{11}
+    \label{induction-example}
+    \uses{ax-induction}
+    (Example of proof by induction) \emph{A certain property $P(n)$ is true for every natural number n.}
+\end{proposition}
+
+\begin{assumption}
+    \label{nat-exists}
+    \uses{ax-zero-nat,ax-succ-nat,ax-succ-ne-zero,ax-succ-injective,ax-induction}
+    \lean{Chapter2.Nat}
+    \emph{(Informal) There exists a number system $\naturals$ , whose elements we will call natural numbers, for which Axioms 2.1-2.5 are true.}
+\end{assumption}
+
+\begin{proposition}{16}
+    \label{recursive-definitions}
+    \uses{nat-exists}
+    \lean{Chapter2.Nat.recurse}
+    (Recursive definitions) \emph{Suppose for each natural number n, we have some functions $f_{n}: \naturals \rightarrow \naturals$ from the natural numbers to the natural numbers. Let c be a natural number. Then we can assign a unique natural number $a_{n}$ to each natural number n, such that $a_{0} = c$ and $a_{n++} = f_{n}(a_{n})$ for each natural number n.}
+\end{proposition}
+
+\subsection{Addition}
+\begin{definition}{1}
+    \label{nat-addition}
+    \uses{recursive-definitions}
+    \lean{Chapter2.Nat.add}
+    (Addition of natural numbers) Let $m$ be a natural number. To add zero to $m$, we define $0+m:=m$. Now suppose inductively that we have defined how to add n to m. Then we can add $n++$ to m by defining $(n++)+m := (n+m)++$.
+\end{definition}
+
+\begin{lemma}{2}
+    \label{nat-add-zero}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_zero}
+    \emph{For any natural number n, $n+0=n$.}
+\end{lemma}
+
+\begin{lemma}{3}
+    \label{nat-add-succ}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_succ}
+    \emph{For any natural numbers n and m, $n+(m++)=(n+m)++$.}
+\end{lemma}
+
+\begin{proposition}{4}
+    \label{nat-add-comm}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_comm}
+    (Addition is commutative) \emph{For any natural numbers n and m, $n+m=m+n$.}
+\end{proposition}
+
+\begin{proposition}{5}
+    \label{nat-add-assoc}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_assoc}
+    (Addition is associative) \emph{For any natural numbers $a, b, c$, we have $(a+b)+c=a+(b+c)$.}
+\end{proposition}
+
+\begin{proposition}{6}
+    \label{nat-add-cancel}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_left_cancel}
+    (Cancellation law) \emph{Let $a, b, c$ be natural numbers such that $a+b=a+c$. Then we have $b=c$.}
+\end{proposition}
+
+\begin{definition}{7}
+    \label{nat-positive}
+    \uses{ax-zero-nat}
+    \lean{Chapter2.Nat.IsPos}
+    (Positive natural numbers) A natural number $n$ is said to be \emph{positive} iff it is not equal to 0.
+\end{definition}
+
+\begin{proposition}{8}
+    \label{nat-pos-add}
+    \uses{nat-positive,nat-addition}
+    \lean{Chapter2.Nat.add_pos_left}
+    \emph{If $a$ is positive and $b$ is a natural number, then $a+b$ is positive (and hence $b+a$ is also, by Proposition~\ref{nat-add-comm}).}
+\end{proposition}
+
+\begin{corollary}{9}
+    \label{nat-add-eq-zero}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.add_eq_zero}
+    If $a$ and $b$ are natural numbers such that $a+b=0$, then $a=0$ and $b=0$.
+\end{corollary}
+
+\begin{lemma}{10}
+    \label{nat-pos-predecessor}
+    \uses{nat-positive,ax-succ-nat}
+    \lean{Chapter2.Nat.uniq_succ_eq}
+    \emph{Let $a$ be a positive number. Then there exists exactly one natural number $b$ such that $b++ = a$.}
+\end{lemma}
+
+\begin{definition}{11}
+    \label{nat-order}
+    \uses{nat-addition}
+    \lean{Chapter2.Nat.instLE,Chapter2.Nat.instLT}
+    (Ordering of the natural numbers) Let $n$ and $m$ be natural numbers. we say that $n$ is \emph{greater than or equal to} $m$, and write $n \geq m$ or $m \leq n$, iff we have $n = m + a$ for some natural number $a$. We say that $n$ is \emph{strictly greater than $m$} and write $n > m$ or $m < n$, iff $n \geq m$ and $n \neq m$.
+\end{definition}
+
+\begin{proposition}{12}
+    \label{nat-order-properties}
+    \uses{nat-order}
+    \lean{Chapter2.Nat.ge_refl,Chapter2.Nat.ge_trans,Chapter2.Nat.ge_antisymm,Chapter2.Nat.add_ge_add_right,Chapter2.Nat.lt_iff_succ_le,Chapter2.Nat.lt_iff_add_pos}
+    (Basic properties of order for natural numbers) \emph{Let $a,b,c$ be natural numbers. Then
+    \begin{enumerate}
+        \item (Order is reflexive) $a \geq a$.
+        \item (Order is transitive) If $a \geq b$ and $b \geq c$, then $a \geq c$.
+        \item (Order is anti-symmetric) If $a \geq b$ and $b \geq a$, then $a = b$.
+        \item (Addition preserves order) $a \geq b$ iff $a+c \geq b+c$
+        \item $a < b$ iff $a++ \leq b$
+        \item $a < b$ iff $b = a + d$ for some positive number $d$.
+    \end{enumerate}
+    }
+\end{proposition}
+
+\begin{proposition}{13}
+    \label{nat-trichotomy}
+    \uses{nat-order}
+    \lean{Chapter2.Nat.trichotomous}
+    (Trichotomy of order for natural numbers). \emph{Let a and b be natural numbers. Then exactly one of the following statements is true: $a<b$, $a=b$, or $a>b$.}
+\end{proposition}
+
+\begin{proposition}{14}
+    \label{strong-induction}
+    \uses{nat-order,ax-induction}
+    \lean{Chapter2.Nat.strong_induction}
+    (Strong principle of induction) \emph{Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m\geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true. (In particular, this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous.) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.}
+\end{proposition}
+
+\subsection{Multiplication}
+\begin{definition}{1}
+    \label{nat-multiplication}
+    \uses{recursive-definitions,nat-addition}
+    \lean{Chapter2.Nat.mul}
+    (Multiplication of natural numbers) Let $m$ be a natural number. To multiply zero to $m$, we define $0\times m := 0$. Now suppose inductively that we have defined how to multiply $n$ to $m$. Then we can multiply $n++$ to $m$ by defining $(n++)\times m := (n\times m) + m$.
+
+    Thus for instance $0 \times m=0$, $1\times m = 0+m$, $2\times m = 0 +  m + m$, etc.. By induction one can easily verify that the product of two natural numbers is a natural number.
+\end{definition}
+
+\begin{lemma}{2}
+    \label{nat-mul-comm}
+    \uses{nat-multiplication}
+    \lean{Chapter2.Nat.mul_comm}
+    (Multiplication is commutative) \emph{Let $n$, $m$ be natural numbers. Then $n\times m = m\times n$.}
+\end{lemma}
+
+\begin{lemma}{3}
+    \label{nat-no-zero-divisors}
+    \uses{nat-multiplication,nat-positive}
+    \lean{Chapter2.Nat.mul_eq_zero,Chapter2.Nat.pos_mul_pos}
+    (Positive natural numbers have no zero divisors) \emph{Let $n, m$ be natural numbers. Then $n\times m = 0$ if and only if at least one of $n, m$ is equal to zero. In particular, if $n$ and $m$ are both positive, then $nm$ is also positive.}
+\end{lemma}
+
+\begin{lemma}{4}
+    \label{nat-distributive}
+    \uses{nat-multiplication}
+    \lean{Chapter2.Nat.mul_add,Chapter2.Nat.add_mul}
+    (Distributive law) \emph{For any natural numbers $a,b,c$, we have $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.}
+\end{lemma}
+
+\begin{lemma}{5}
+    \label{nat-mul-assoc}
+    \uses{nat-multiplication}
+    \lean{Chapter2.Nat.mul_assoc}
+    (Multiplication is associative) \emph{For any natural numbers $a,b,c$, we have $(a\times b)\times c = a\times (b\times c)$.}
+\end{lemma}
+
+\begin{proposition}{6}
+    \label{nat-mul-preserves-order}
+    \uses{nat-multiplication,nat-order,nat-positive}
+    \lean{Chapter2.Nat.mul_lt_mul_of_pos_right}
+    (Multiplication preserves order) \emph{If $a, b$ are natural numbers such that $a < b$, and $c$ is positive, then $ac < bc$.}
+\end{proposition}
+
+\begin{corollary}{7}
+    \label{nat-mul-cancel}
+    \uses{nat-multiplication}
+    \lean{Chapter2.Nat.mul_cancel_right}
+    (Cancellation law) \emph{Let $a,b,c$ be natural numbers such that $ac=bc$ and $c$ is non-zero. Then $a=b$.}
+\end{corollary}
+
+% \begin{remark}{8}
+%     Just as Proposition~\ref{nat-add-cancel} will allow for a "virtual subtraction" which will eventually let us define genuine subtraction, this corollary provides a "virtual division" which will be needed to define genuine division later on.
+% \end{remark}
+
+\begin{proposition}{9}
+    \label{euclidean-algorithm}
+    \uses{nat-multiplication,nat-order,nat-positive}
+    \lean{Chapter2.Nat.exists_div_mod}
+    (Euclidean algorithm) \emph{Let $n$ be a natural number, and let $q$ be a positive number. Then there exist natural numbers $m, r,$ such that $0\leq r < q$ and $n = mq+r$.}
+\end{proposition}
+
+% \begin{remark}{10}
+%     In other words, we can divide a natural number $n$ by a positive number $q$ to obtain a quotient $m$ (which is another natural number) and a remainder $r$ (which is less than $q$). This algorithm marks the beginning of \emph{number theory}, which is a beautiful and important subject but one which is beyond the scope of this text.
+% \end{remark}
+
+\begin{definition}{11}
+    \label{nat-exponentiation}
+    \uses{recursive-definitions,nat-multiplication}
+    \lean{Chapter2.Nat.pow}
+    (Exponentiation for natural numbers) Let $m$ be a natural number. To raise $m$ to the power 0, we define $m^0 := 1$; in particular, we define $0^0 := 1$. Now suppose recursively that $m^n$ has been defined for some natural number $n$, then we define $m^{n++} := m^n \times m$.
+\end{definition}
+
+% \begin{examples}{12}
+%     Thus for instance $x^1 = x^0 \times x = 1 \times x = x$; $x^2 = x^1 \times x = x \times x$; $x^3 = x^2 \times x = x\times x\times x$; and so forth. By induction we see that this recursive definition defines $x^n$ for all natural numbers $n$.
+% \end{examples}

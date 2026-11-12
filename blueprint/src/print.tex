@@ -1,0 +1,24 @@
+% PDF build: pdflatex print.tex
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{fancyhdr}
+\usepackage[bookmarksnumbered]{hyperref}
+\usepackage{blueprint}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+
+\input{macros/common}
+
+\begin{document}
+\lhead{}
+\rhead{}
+\chead{Axioms, Definitions, Lemmas, Propositions, and Theorems in Analysis}
+
+\tableofcontents
+\newpage
+
+\input{content}
+
+\end{document}
