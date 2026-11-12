@@ -213,19 +213,19 @@ We define 1 to be the number $0++$, 2 to be the number $(0++)++$, etc.
     (Positive natural numbers have no zero divisors) \emph{Let $n, m$ be natural numbers. Then $n\times m = 0$ if and only if at least one of $n, m$ is equal to zero. In particular, if $n$ and $m$ are both positive, then $nm$ is also positive.}
 \end{lemma}
 
-\begin{lemma}{4}
+\begin{proposition}{4}
     \label{nat-distributive}
     \uses{nat-multiplication}
     \lean{Chapter2.Nat.mul_add,Chapter2.Nat.add_mul}
     (Distributive law) \emph{For any natural numbers $a,b,c$, we have $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$.}
-\end{lemma}
+\end{proposition}
 
-\begin{lemma}{5}
+\begin{proposition}{5}
     \label{nat-mul-assoc}
     \uses{nat-multiplication}
     \lean{Chapter2.Nat.mul_assoc}
     (Multiplication is associative) \emph{For any natural numbers $a,b,c$, we have $(a\times b)\times c = a\times (b\times c)$.}
-\end{lemma}
+\end{proposition}
 
 \begin{proposition}{6}
     \label{nat-mul-preserves-order}
