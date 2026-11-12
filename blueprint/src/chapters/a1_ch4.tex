@@ -182,14 +182,14 @@
     for some positive integers $a$ and $b$).
 \end{definition}
 
-\begin{lemma}{7}
+\begin{definition}{8}
     \label{rat-order}
     \uses{rat-positive,rat-operations}
-    \lean{Section_4_2.Rat.lt_iff}
+    \lean{Section_4_2.Rat.instLT,Section_4_2.Rat.instLE}
     (Ordering of the rationals). Let $x$ and $y$ be rational numbers. We say that $x > y$ iff $x - y$ is a positive
     rational number, and $x < y$ iff $x - y$ is a negative rational number. We write $x \geq y$ iff either $x > y$ or
     $x = y$, and similarly define $x \leq y$.
-\end{lemma}
+\end{definition}
 
 \begin{proposition}{9}
     \label{rat-order-properties}
