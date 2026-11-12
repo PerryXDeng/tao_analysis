@@ -46,6 +46,7 @@ blueprint/
     plastex.cfg            HTML build settings
     blueprint.sty          LaTeX stand-in for the blueprint package (PDF only)
     hover.js               hover previews, inline "uses" lines, direct Lean links
+    navbox.js              floating "Chapters" box for jumping between chapters
     extra_styles.css       styles for the above
 ```
 
