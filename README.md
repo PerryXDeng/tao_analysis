@@ -49,6 +49,17 @@ blueprint/
     extra_styles.css       styles for the above
 ```
 
+## Adding notes through the inbox
+
+Instead of writing the LaTeX below by hand, type notes in plain language into any text file in `inbox/` (git-ignored, so drafts stay local) and ask Claude to process the inbox. Give each statement its book number and type, then the statement in your own words. Maths can be LaTeX or plain Unicode:
+
+```
+5.3.1 Definition (Real numbers): a real number is an object LIM a_n where (a_n) is a Cauchy sequence of rationals; LIM a_n = LIM b_n iff the sequences are equivalent.
+5.3.2 Proposition: equality of formal limits is reflexive, symmetric and transitive.
+```
+
+Claude converts each entry into the format described next: it picks a key, adds dependencies and a checked Lean link, puts it in the right chapter, and runs the check and both builds. Processed files are moved to `inbox/done/`.
+
 ## Writing a statement
 
 ```latex
